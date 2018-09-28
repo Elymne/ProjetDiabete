@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test.modele.dao;
 
 import JDBC.Connexion;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import modele.dao.PersonneDao;
@@ -22,7 +16,7 @@ public class PersonneDaoTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         try {
             test0_Connexion();
             System.out.println("Test0 effectué : connexion\n");
@@ -37,6 +31,7 @@ public class PersonneDaoTest {
             test5_Update(1, "nomMoinsRandomMODIFIE", "prenomMoinsRandomMODIFIE", "sexeMoinsRandomMODIFIE", "0000-00-00", "securitéSocialeMoinsRandomMODIFIE");
             System.out.println("Test5 effectué : Modification des données dans la table Personne (Ligne id = 1 )\n");
             test6_Delete(1);
+            test4_SelectMultiple();
             System.out.println("Test6 effectué : Supression des données dont l'id est 1\n");
         } catch (ClassNotFoundException e) {
             System.err.println("Erreur de pilote JDBC : " + e);
@@ -44,41 +39,42 @@ public class PersonneDaoTest {
             System.err.println("Erreur SQL : " + e);
         }
     }
-    
+
     public static void test0_Connexion() throws ClassNotFoundException, SQLException {
         new Connexion();
     }
-    
-    public static void test1_Insert(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws SQLException, ClassNotFoundException{
+
+    public static void test1_Insert(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws SQLException, ClassNotFoundException {
         PersonneDao.insert(id, nom, prenom, sexe, dateNaissance, securiteSociale);
     }
+
     public static void test2_SelectUnique(int id) throws SQLException, ClassNotFoundException {
         Personne personne = PersonneDao.selectOneById(id);
-        System.out.println("Personne n° : "+id+" : "+personne.toString());
+        System.out.println("Personne n° : " + id + " : " + personne.toString());
     }
-    
+
     public static void test3_SelectUniqueName(String nom) throws SQLException, ClassNotFoundException {
         Personne personne = PersonneDao.selectOneByNom(nom);
-        System.out.println("Personne de nom : "+nom+" : "+personne.toString());
+        System.out.println("Personne de nom : " + nom + " : " + personne.toString());
     }
-    
+
     public static void test4_SelectMultiple() throws SQLException, ClassNotFoundException {
         List<Personne> desPersonnes = PersonneDao.selectAll();
         System.out.println("Les Personnes {");
-        for(Personne personne : desPersonnes){
+        for (Personne personne : desPersonnes) {
             System.out.println("Representation : " + personne.toString());
-            System.out.println("}");
         }
+        System.out.println("}");
     }
-    
-    public static void test5_Update(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws SQLException, ClassNotFoundException{
+
+    public static void test5_Update(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws SQLException, ClassNotFoundException {
         PersonneDao.update(id, nom, prenom, sexe, dateNaissance, securiteSociale);
         Personne personne = PersonneDao.selectOneById(id);
-        System.out.println("Personne n° : "+id+" : "+personne.toString());
+        System.out.println("Personne n° : " + id + " : " + personne.toString());
     }
-    
-    public static void test6_Delete(int id) throws SQLException, ClassNotFoundException{
-        PersonneDao.delete(id);   
+
+    public static void test6_Delete(int id) throws SQLException, ClassNotFoundException {
+        PersonneDao.delete(id);
     }
-    
+
 }

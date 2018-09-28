@@ -20,8 +20,8 @@ public class ControleurPrincipal {
         controleurMenu.getVue().setEnabled(true);
     }
     
-    public void ActiverControleur(EnumAction activation){
-        switch(activation){
+    public void ActiverControleur(EnumAction action){
+        switch(action){
             case QUITTER_APPLICATION:
                 menuQuitter();
                 break;

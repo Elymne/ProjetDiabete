@@ -5,16 +5,15 @@
  */
 package modele.metier;
 
-import java.sql.Time;
-
 /**
  *
  * @author Elymne
  */
 public class Evaluation {
 
+    private int id;
     private double evaluationTourDeTaille;
-    private Time evaluationActiviteSportive;
+    private int evaluationActiviteSportive;
     private boolean evaluationTraitement;
     private boolean evaluationFamillePositive;
     private double evaluationMasse;
@@ -22,7 +21,8 @@ public class Evaluation {
     private boolean evaluationATCDGlycemie;
     private Personne evaluationPersonne;
 
-    public Evaluation(double evaluationTourDeTaille, Time evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCD, Personne evaluationPersonne) {
+    public Evaluation(int id, double evaluationTourDeTaille, int evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCD, Personne evaluationPersonne) {
+        this.id = id;
         this.evaluationTourDeTaille = evaluationTourDeTaille;
         this.evaluationActiviteSportive = evaluationActiviteSportive;
         this.evaluationTraitement = evaluationTraitement;
@@ -33,6 +33,11 @@ public class Evaluation {
         this.evaluationPersonne = evaluationPersonne;
     }
 
+    @Override
+    public String toString() {
+        return "Evaluation{" + "id=" + id + ", evaluationTourDeTaille=" + evaluationTourDeTaille + ", evaluationActiviteSportive=" + evaluationActiviteSportive + ", evaluationTraitement=" + evaluationTraitement + ", evaluationFamillePositive=" + evaluationFamillePositive + ", evaluationMasse=" + evaluationMasse + ", evaluationConsoLegume=" + evaluationConsoLegume + ", evaluationATCDGlycemie=" + evaluationATCDGlycemie + ", evaluationPersonne=" + evaluationPersonne.toString() + '}';
+    }
+
     public double getEvaluationTourDeTaille() {
         return evaluationTourDeTaille;
     }
@@ -41,11 +46,11 @@ public class Evaluation {
         this.evaluationTourDeTaille = evaluationTourDeTaille;
     }
 
-    public Time getEvaluationActiviteSportive() {
+    public int getEvaluationActiviteSportive() {
         return evaluationActiviteSportive;
     }
 
-    public void setEvaluationActiviteSportive(Time evaluationActiviteSportive) {
+    public void setEvaluationActiviteSportive(int evaluationActiviteSportive) {
         this.evaluationActiviteSportive = evaluationActiviteSportive;
     }
 
@@ -95,6 +100,22 @@ public class Evaluation {
 
     public void setEvaluationPersonne(Personne evaluationPersonne) {
         this.evaluationPersonne = evaluationPersonne;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isEvaluationATCDGlycemie() {
+        return evaluationATCDGlycemie;
+    }
+
+    public void setEvaluationATCDGlycemie(boolean evaluationATCDGlycemie) {
+        this.evaluationATCDGlycemie = evaluationATCDGlycemie;
     }
 
 }

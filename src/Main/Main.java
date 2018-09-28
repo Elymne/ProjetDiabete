@@ -21,6 +21,7 @@ public class Main {
         
         new Connexion();
         CreationTable.creationTableBddPersonne();
+        CreationTable.creationTableBddEvaluation();
         
         
         

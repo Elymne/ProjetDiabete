@@ -6,12 +6,10 @@
 package modele.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import modele.metier.Personne;
 
@@ -63,7 +61,7 @@ public class PersonneDao {
     }
 
     public static ArrayList<Personne> selectAll() throws SQLException, ClassNotFoundException {
-        ArrayList<Personne> listePersonne = new ArrayList<Personne>();
+        ArrayList<Personne> listePersonnes = new ArrayList<Personne>();
         Personne personne = null;
 
         Class.forName("org.sqlite.JDBC");
@@ -74,7 +72,7 @@ public class PersonneDao {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 personne = PersonneDao.personneFromResultSet(rs);
-                listePersonne.add(personne);
+                listePersonnes.add(personne);
             }
             rs.close();
             pstmt.close();
@@ -82,7 +80,53 @@ public class PersonneDao {
             System.out.println(e.getMessage());
         }
         c.close();
-        return listePersonne;
+        return listePersonnes;
+    }
+    
+    public static ArrayList<Personne> selectAllOrderByNameASC() throws SQLException, ClassNotFoundException {
+        ArrayList<Personne> listePersonnes = new ArrayList<Personne>();
+        Personne personne = null;
+
+        Class.forName("org.sqlite.JDBC");
+        Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
+        c.setAutoCommit(false);
+        String sql = "SELECT * FROM PERSONNE order by NOM ASC;";
+        try (PreparedStatement pstmt = c.prepareStatement(sql);) {
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                personne = PersonneDao.personneFromResultSet(rs);
+                listePersonnes.add(personne);
+            }
+            rs.close();
+            pstmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        c.close();
+        return listePersonnes;
+    }
+    
+    public static ArrayList<Personne> selectAllOrderByNameDESC() throws SQLException, ClassNotFoundException {
+        ArrayList<Personne> listePersonnes = new ArrayList<Personne>();
+        Personne personne = null;
+
+        Class.forName("org.sqlite.JDBC");
+        Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
+        c.setAutoCommit(false);
+        String sql = "SELECT * FROM PERSONNE order by NOM DESC;";
+        try (PreparedStatement pstmt = c.prepareStatement(sql);) {
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                personne = PersonneDao.personneFromResultSet(rs);
+                listePersonnes.add(personne);
+            }
+            rs.close();
+            pstmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        c.close();
+        return listePersonnes;
     }
 
     public static void insert(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws ClassNotFoundException, SQLException {
