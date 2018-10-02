@@ -8,6 +8,8 @@ package Main;
 import controleur.ControleurPrincipal;
 import JDBC.Connexion;
 import JDBC.CreationTable;
+import static JDBC.CreationTable.creationTableBddEvaluation;
+import static JDBC.CreationTable.creationTableBddPersonne;
 /**
  *
  * @author Elymne
@@ -20,17 +22,11 @@ public class Main {
     public static void main(String[] args) {
         
         new Connexion();
-        CreationTable.creationTableBddPersonne();
-        CreationTable.creationTableBddEvaluation();
         
-        
-        
-        /*
         ControleurPrincipal controleurPrincipal;
         
         controleurPrincipal = new ControleurPrincipal();
         controleurPrincipal.ActiverControleur();
-        */
     }
 
 }

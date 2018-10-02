@@ -45,7 +45,7 @@ public class PersonneDaoTest {
     }
 
     public static void test1_Insert(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws SQLException, ClassNotFoundException {
-        PersonneDao.insert(id, nom, prenom, sexe, dateNaissance, securiteSociale);
+        PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale);
     }
 
     public static void test2_SelectUnique(int id) throws SQLException, ClassNotFoundException {

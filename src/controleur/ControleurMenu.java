@@ -20,6 +20,7 @@ public class ControleurMenu extends ControleurGenerique implements ActionListene
         getVue().getjButtonEvaluation().addActionListener(this);
         getVue().getjButtonListeDiagnostique().addActionListener(this);
         getVue().getjButtonStatistique().addActionListener(this);
+        getVue().getjButtonAjoutPatient().addActionListener(this);
     }
     
     @Override
@@ -34,28 +35,36 @@ public class ControleurMenu extends ControleurGenerique implements ActionListene
         }
     }
     
-    public void acccesEvaluation() {
+    public void accesEvaluation() {
         this.getControleurPrincipal().ActiverControleur(EnumAction.EVALUATION);
     }
     
-    public void acccesListeDiagnostique() {
+    public void accesListeDiagnostique() {
         this.getControleurPrincipal().ActiverControleur(EnumAction.LISTEDIAGNOSTIQUE);
     }
     
-    public void acccesStatistique() {
+    public void accesStatistique() {
         this.getControleurPrincipal().ActiverControleur(EnumAction.STATISTIQUE);
+    }
+    
+    public void accesAjoutPatient() {
+        this.getControleurPrincipal().ActiverControleur(EnumAction.AJOUTPATIENT);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(getVue().getjButtonEvaluation())) {
-            acccesEvaluation();
+            accesEvaluation();
         } else {
             if (e.getSource().equals(getVue().getjButtonListeDiagnostique())) {
-                acccesListeDiagnostique();
+                accesListeDiagnostique();
             } else {
                 if(e.getSource().equals(getVue().getjButtonStatistique())){
-                    acccesStatistique();
+                    accesStatistique();
+                }else {
+                    if(e.getSource().equals(getVue().getjButtonAjoutPatient())){
+                        accesAjoutPatient();
+                    }
                 }
             }
         }

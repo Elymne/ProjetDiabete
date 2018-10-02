@@ -5,6 +5,9 @@
  */
 package vue;
 
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Elymne
@@ -18,8 +21,6 @@ public class VueEvaluation extends VueGenerique {
         super();
         initComponents();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,10 +35,7 @@ public class VueEvaluation extends VueGenerique {
         jPanelEvaluation = new javax.swing.JPanel();
         jLabelEvaluation = new javax.swing.JLabel();
         jPanelInformation = new javax.swing.JPanel();
-        jTextFieldName = new javax.swing.JTextField();
-        jTextFieldPrenom = new javax.swing.JTextField();
         jCheckBoxActiviteSportive = new javax.swing.JCheckBox();
-        jComboBoxSexe = new javax.swing.JComboBox<>();
         jCheckBoxHTA = new javax.swing.JCheckBox();
         jCheckBoxFamilleDiabete = new javax.swing.JCheckBox();
         jCheckBoxTauxGlycémie = new javax.swing.JCheckBox();
@@ -61,6 +59,9 @@ public class VueEvaluation extends VueGenerique {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jComboBoxNomPatient = new javax.swing.JComboBox<>();
+        jComboBoxPrenomPatient = new javax.swing.JComboBox<>();
+        jTextFieldSexe = new javax.swing.JTextField();
         jButtonValider = new javax.swing.JButton();
         jButtonAnnuler = new javax.swing.JButton();
 
@@ -74,10 +75,13 @@ public class VueEvaluation extends VueGenerique {
 
         jPanelInformation.setBackground(new java.awt.Color(255, 255, 255));
 
-        jComboBoxSexe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxAlimentation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Non", "Tous les jours", "Pas tous les jours" }));
 
-        jComboBoxAlimentation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jTextFieldDateAnnee.setEditable(false);
 
+        jTextFieldDateMois.setEditable(false);
+
+        jTextFieldDateJour.setEditable(false);
         jTextFieldDateJour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldDateJourActionPerformed(evt);
@@ -126,6 +130,8 @@ public class VueEvaluation extends VueGenerique {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("ATCD glycémie supérieur à la normale");
 
+        jTextFieldSexe.setEditable(false);
+
         javax.swing.GroupLayout jPanelInformationLayout = new javax.swing.GroupLayout(jPanelInformation);
         jPanelInformation.setLayout(jPanelInformationLayout);
         jPanelInformationLayout.setHorizontalGroup(
@@ -147,21 +153,6 @@ public class VueEvaluation extends VueGenerique {
                 .addGap(26, 26, 26)
                 .addGroup(jPanelInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelInformationLayout.createSequentialGroup()
-                        .addGroup(jPanelInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCheckBoxActiviteSportive, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxSexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBoxHTA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBoxFamilleDiabete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBoxTauxGlycémie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxAlimentation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldIMC))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInformationLayout.createSequentialGroup()
-                        .addGroup(jPanelInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldPrenom, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldName))
-                        .addGap(40, 40, 40))
-                    .addGroup(jPanelInformationLayout.createSequentialGroup()
                         .addGroup(jPanelInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTextFieldTourTaille, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelInformationLayout.createSequentialGroup()
@@ -176,23 +167,38 @@ public class VueEvaluation extends VueGenerique {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldDateJour, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))))
+                        .addGap(20, 20, 20))
+                    .addGroup(jPanelInformationLayout.createSequentialGroup()
+                        .addGroup(jPanelInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCheckBoxActiviteSportive, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCheckBoxHTA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCheckBoxFamilleDiabete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCheckBoxTauxGlycémie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxAlimentation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldIMC))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInformationLayout.createSequentialGroup()
+                        .addGroup(jPanelInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldSexe, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxPrenomPatient, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxNomPatient, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(40, 40, 40))))
         );
         jPanelInformationLayout.setVerticalGroup(
             jPanelInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInformationLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBoxNomPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(jComboBoxPrenomPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxSexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(jTextFieldSexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldDateAnnee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -334,7 +340,8 @@ public class VueEvaluation extends VueGenerique {
     private javax.swing.JCheckBox jCheckBoxHTA;
     private javax.swing.JCheckBox jCheckBoxTauxGlycémie;
     private javax.swing.JComboBox<String> jComboBoxAlimentation;
-    private javax.swing.JComboBox<String> jComboBoxSexe;
+    private javax.swing.JComboBox<String> jComboBoxNomPatient;
+    private javax.swing.JComboBox<String> jComboBoxPrenomPatient;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -356,8 +363,7 @@ public class VueEvaluation extends VueGenerique {
     private javax.swing.JTextField jTextFieldDateJour;
     private javax.swing.JTextField jTextFieldDateMois;
     private javax.swing.JTextField jTextFieldIMC;
-    private javax.swing.JTextField jTextFieldName;
-    private javax.swing.JTextField jTextFieldPrenom;
+    private javax.swing.JTextField jTextFieldSexe;
     private javax.swing.JTextField jTextFieldTourTaille;
     // End of variables declaration//GEN-END:variables
 
@@ -393,10 +399,6 @@ public class VueEvaluation extends VueGenerique {
         return jComboBoxAlimentation;
     }
 
-    public javax.swing.JComboBox<String> getjComboBoxSexe() {
-        return jComboBoxSexe;
-    }
-
     public javax.swing.JLabel getjLabelEvaluation() {
         return jLabelEvaluation;
     }
@@ -425,12 +427,32 @@ public class VueEvaluation extends VueGenerique {
         return jTextFieldIMC;
     }
 
-    public javax.swing.JTextField getjTextFieldName() {
-        return jTextFieldName;
+    public JComboBox<String> getjComboBoxNomPatient() {
+        return jComboBoxNomPatient;
     }
 
-    public javax.swing.JTextField getjTextFieldPrenom() {
-        return jTextFieldPrenom;
+    public JComboBox<String> getjComboBoxPrenomPatient() {
+        return jComboBoxPrenomPatient;
+    }
+
+    public JTextField getjTextFieldSexe() {
+        return jTextFieldSexe;
+    }
+
+    public void setjTextFieldDateAnnee(JTextField jTextFieldDateAnnee) {
+        this.jTextFieldDateAnnee = jTextFieldDateAnnee;
+    }
+
+    public void setjTextFieldDateJour(JTextField jTextFieldDateJour) {
+        this.jTextFieldDateJour = jTextFieldDateJour;
+    }
+
+    public void setjTextFieldDateMois(JTextField jTextFieldDateMois) {
+        this.jTextFieldDateMois = jTextFieldDateMois;
+    }
+
+    public void setjTextFieldSexe(JTextField jTextFieldSexe) {
+        this.jTextFieldSexe = jTextFieldSexe;
     }
 
     public javax.swing.JTextField getjTextFieldTourTaille() {

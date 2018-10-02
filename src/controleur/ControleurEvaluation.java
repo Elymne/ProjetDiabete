@@ -25,6 +25,37 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
         return (VueEvaluation) vue;
     }
     
+    /*
+    public void ajouterEvaluation(){
+        String nom = (((VueEvaluation) vue).getjTextFieldName().getText());
+        String prenom = (((VueEvaluation) vue).getjTextFieldPrenom().getText());
+        String sexe = (((VueEvaluation) vue).getjComboBoxSexe().getSelectedItem().toString());
+        String dateNaissance = 
+                (((VueEvaluation) vue).getjTextFieldDateAnnee().getText()) + "-" 
+                + (((VueEvaluation) vue).getjTextFieldDateMois().getText()) + "-" 
+                + (((VueEvaluation) vue).getjTextFieldDateJour().getText());
+        double tourTaille =  Double.parseDouble(((VueEvaluation) vue).getjTextFieldTourTaille().getText());
+        boolean ActiviteSportive = false;
+        if((((VueEvaluation) vue).getjCheckBoxActiviteSportive().isSelected())){
+            ActiviteSportive = true;
+        }
+        boolean hta = false;
+        if((((VueEvaluation) vue).getjCheckBoxHTA().isSelected())){
+            hta = true;
+        }
+        boolean familleDiabete = false;
+        if((((VueEvaluation) vue).getjCheckBoxFamilleDiabete().isSelected())){
+            familleDiabete = true;
+        }
+        double imc =  Double.parseDouble(((VueEvaluation) vue).getjTextFieldIMC().getText());
+        String alimentation = (((VueEvaluation) vue).getjComboBoxAlimentation().getSelectedItem().toString());
+        boolean tauxGlycemie = false;
+        if((((VueEvaluation) vue).getjCheckBoxTauxGlycémie().isSelected())){
+            tauxGlycemie = true;
+        }
+    }
+*/
+    
     public void quitterVueEvaluation() {
         int a = JOptionPane.showConfirmDialog(getVue(), "Annulation de l'evaluation\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {

@@ -129,24 +129,23 @@ public class PersonneDao {
         return listePersonnes;
     }
 
-    public static void insert(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws ClassNotFoundException, SQLException {
+    public static void insert(String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
         c.setAutoCommit(false);
-        String sql = "INSERT INTO PERSONNE (ID,NOM,PRENOM,SEXE,DATENAISSANCE,SECURITESOCIALE) "
+        String sql = "INSERT INTO PERSONNE (NOM,PRENOM,SEXE,DATENAISSANCE,SECURITESOCIALE) "
                 + "VALUES (?,"
                 + "?,"
                 + "?,"
                 + "?,"
-                + "?,"
                 + "?);";
+                
         try (PreparedStatement pstmt = c.prepareStatement(sql);) {
-            pstmt.setInt(1, id);
-            pstmt.setString(2, nom);
-            pstmt.setString(3, prenom);
-            pstmt.setString(4, sexe);
-            pstmt.setString(5, dateNaissance);
-            pstmt.setString(6, securiteSociale);
+            pstmt.setString(1, nom);
+            pstmt.setString(2, prenom);
+            pstmt.setString(3, sexe);
+            pstmt.setString(4, dateNaissance);
+            pstmt.setString(5, securiteSociale);
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {

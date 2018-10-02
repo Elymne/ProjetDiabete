@@ -25,6 +25,10 @@ public class VueMenu extends VueGenerique {
         return jButtonStatistique;
     }
     
+    public JButton getjButtonAjoutPatient() {
+        return jButtonAjoutPatient;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,6 +43,7 @@ public class VueMenu extends VueGenerique {
         jButtonEvaluation = new javax.swing.JButton();
         jButtonListeDiagnostique = new javax.swing.JButton();
         jButtonStatistique = new javax.swing.JButton();
+        jButtonAjoutPatient = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +54,8 @@ public class VueMenu extends VueGenerique {
         jButtonListeDiagnostique.setText("Liste Diagnostique");
 
         jButtonStatistique.setText("Statistique");
+
+        jButtonAjoutPatient.setText("Ajouter un Patient");
 
         javax.swing.GroupLayout jPanelMenuLayout = new javax.swing.GroupLayout(jPanelMenu);
         jPanelMenu.setLayout(jPanelMenuLayout);
@@ -61,7 +68,9 @@ public class VueMenu extends VueGenerique {
                     .addComponent(jButtonEvaluation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonListeDiagnostique, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonStatistique, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonAjoutPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         jPanelMenuLayout.setVerticalGroup(
             jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,7 +78,9 @@ public class VueMenu extends VueGenerique {
                 .addContainerGap()
                 .addComponent(jLabelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonEvaluation)
+                .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEvaluation)
+                    .addComponent(jButtonAjoutPatient))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonListeDiagnostique)
                 .addGap(18, 18, 18)
@@ -93,6 +104,7 @@ public class VueMenu extends VueGenerique {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAjoutPatient;
     private javax.swing.JButton jButtonEvaluation;
     private javax.swing.JButton jButtonListeDiagnostique;
     private javax.swing.JButton jButtonStatistique;

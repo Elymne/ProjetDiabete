@@ -27,7 +27,7 @@ public class CreationTable {
 
             stmt = c.createStatement();
             String sql = "CREATE TABLE PERSONNE "
-                    + "(ID INT PRIMARY KEY    NOT NULL,"
+                    + "(ID INTEGER PRIMARY KEY    NOT NULL,"
                     + " NOM    TEXT    NOT NULL, "
                     + " PRENOM    TEXT    NOT NULL, "
                     + " SEXE    CHAR(1), "
@@ -58,7 +58,7 @@ public class CreationTable {
 
             stmt = c.createStatement();
             String sql = "CREATE TABLE EVALUATION "
-                    + "(ID INT PRIMARY KEY    NOT NULL,"
+                    + "(ID INTEGER PRIMARY KEY    NOT NULL,"
                     + " TOURDETAILLE    REAL, "
                     + " ACTIVITESPORTIVE    INTEGER,"
                     + " TRAITEMENT    INTEGER,"

@@ -51,7 +51,7 @@ public class EvaluationDaoTest {
     }
 
     public static void test1_Insert(int id, double evaluationTourDeTaille, int evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCDGlycemie, Personne evaluationPersonne) throws SQLException, ClassNotFoundException {
-        EvaluationDao.insert(id, evaluationTourDeTaille, evaluationActiviteSportive, evaluationTraitement, evaluationFamillePositive, evaluationMasse, evaluationConsoLegume, evaluationATCDGlycemie, evaluationPersonne);
+        EvaluationDao.insert(evaluationTourDeTaille, evaluationActiviteSportive, evaluationTraitement, evaluationFamillePositive, evaluationMasse, evaluationConsoLegume, evaluationATCDGlycemie, evaluationPersonne);
     }
 
     public static void test2_SelectUnique(int id) throws SQLException, ClassNotFoundException {
@@ -84,7 +84,7 @@ public class EvaluationDaoTest {
     }
 
     public static void test1_InsertPersonne(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws SQLException, ClassNotFoundException {
-        PersonneDao.insert(id, nom, prenom, sexe, dateNaissance, securiteSociale);
+        PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale);
     }
 
 }

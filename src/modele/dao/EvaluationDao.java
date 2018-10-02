@@ -156,13 +156,12 @@ public class EvaluationDao {
     
     
     
-    public static void insert(int id, double evaluationTourDeTaille, int evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCDGlycemie, Personne evaluationPersonne) throws ClassNotFoundException, SQLException {
+    public static void insert(double evaluationTourDeTaille, int evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCDGlycemie, Personne evaluationPersonne) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
         c.setAutoCommit(false);
-        String sql = "INSERT INTO EVALUATION (ID,TOURDETAILLE,ACTIVITESPORTIVE,TRAITEMENT,FAMILLEPOSITIVE,MASSE,CONSOLEGUME,ATCDGLYCEMIE,IDPERSONNE) "
+        String sql = "INSERT INTO EVALUATION (TOURDETAILLE,ACTIVITESPORTIVE,TRAITEMENT,FAMILLEPOSITIVE,MASSE,CONSOLEGUME,ATCDGLYCEMIE,IDPERSONNE) "
                 + "VALUES (?,"
-                + "?,"
                 + "?,"
                 + "?,"
                 + "?,"
@@ -171,15 +170,14 @@ public class EvaluationDao {
                 + "?,"
                 + "?);";
         try (PreparedStatement pstmt = c.prepareStatement(sql);) {
-            pstmt.setInt(1, id);
-            pstmt.setDouble(2, evaluationTourDeTaille);
-            pstmt.setInt(3, evaluationActiviteSportive);
-            pstmt.setInt(4, evaluationTraitement ? 1 : 0);
-            pstmt.setInt(5, evaluationFamillePositive ? 1 : 0);
-            pstmt.setDouble(6, evaluationMasse);
-            pstmt.setInt(7, evaluationConsoLegume);
-            pstmt.setInt(8, evaluationATCDGlycemie ? 1 : 0);
-            pstmt.setInt(9, evaluationPersonne.getId());
+            pstmt.setDouble(1, evaluationTourDeTaille);
+            pstmt.setInt(2, evaluationActiviteSportive);
+            pstmt.setInt(3, evaluationTraitement ? 1 : 0);
+            pstmt.setInt(4, evaluationFamillePositive ? 1 : 0);
+            pstmt.setDouble(5, evaluationMasse);
+            pstmt.setInt(6, evaluationConsoLegume);
+            pstmt.setInt(7, evaluationATCDGlycemie ? 1 : 0);
+            pstmt.setInt(8, evaluationPersonne.getId());
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {

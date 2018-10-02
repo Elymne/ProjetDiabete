@@ -11,6 +11,7 @@ public class ControleurPrincipal {
     
     private ControleurMenu controleurMenu = null;
     private ControleurEvaluation controleurEvaluation = null;
+    private ControleurAjoutPatient controleurAjoutPatient = null;
     
     public void ActiverControleur(){
         if(controleurMenu==null){
@@ -30,6 +31,12 @@ public class ControleurPrincipal {
                 break;
             case QUITTER_EVALUATION:
                 quitterVueEvaluation();
+                break;
+            case AJOUTPATIENT:
+                accesVueAjoutPatient();
+                break;
+            case QUITTER_AJOUTPATIENT:
+                quitterVueAjoutPatient();
                 break;
             case LISTEDIAGNOSTIQUE:
                 System.out.println("Non");
@@ -61,6 +68,23 @@ public class ControleurPrincipal {
         controleurMenu.getVue().setEnabled(true);
         controleurEvaluation.getVue().setVisible(false);
         controleurEvaluation = null;
+    }
+    
+    private void accesVueAjoutPatient() {
+        if (controleurAjoutPatient == null) {
+            controleurAjoutPatient = new ControleurAjoutPatient(this);
+        }
+        controleurMenu.getVue().setEnabled(false);
+        controleurAjoutPatient.getVue().setVisible(true);
+    }
+    
+    private void quitterVueAjoutPatient(){
+        if (controleurMenu == null) {
+            controleurMenu = new ControleurMenu(this);
+        }
+        controleurMenu.getVue().setEnabled(true);
+        controleurAjoutPatient.getVue().setVisible(false);
+        controleurAjoutPatient = null;
     }
     
     private void menuQuitter() {
