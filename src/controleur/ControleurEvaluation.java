@@ -4,7 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modele.dao.PersonneDao;
+import modele.metier.Personne;
 import vue.VueEvaluation;
 /**
  *
@@ -23,6 +27,40 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
     @Override
     public VueEvaluation getVue() {
         return (VueEvaluation) vue;
+    }
+    
+    public void remplirJComboBoxNom() throws SQLException, ClassNotFoundException {
+        ArrayList<Personne> listePersonnes = new ArrayList<>();
+        listePersonnes = PersonneDao.selectAll();
+        for (Personne personne : listePersonnes) {
+            getVue().getjComboBoxNomPatient().addItem(personne.getNom());
+        }
+    }
+
+    public void remplirJComboBoxPrenom() throws SQLException, ClassNotFoundException {
+        ArrayList<Personne> listePersonnes = new ArrayList<>();
+        String prenom = (((VueEvaluation) vue).getjComboBoxNomPatient().getSelectedItem().toString());
+        listePersonnes = PersonneDao.selectAllByNom(prenom);
+        for (Personne personne : listePersonnes) {
+            getVue().getjComboBoxPrenomPatient().addItem(personne.getPrenom());
+        }
+    }
+    
+    public void remplirJTextFieldSexe() throws ClassNotFoundException, SQLException {
+        String nom = getVue().getjComboBoxNomPatient().getSelectedItem().toString();
+        String prenom = getVue().getjComboBoxPrenomPatient().getSelectedItem().toString();
+        Personne personne = PersonneDao.selectOneByNomAndPrenom(nom, prenom);
+        getVue().getjTextFieldSexe().setText(personne.getSexe());
+    }
+    
+    public void remplirJTextFieldDate() throws ClassNotFoundException, SQLException {
+        String nom = getVue().getjComboBoxNomPatient().getSelectedItem().toString();
+        String prenom = getVue().getjComboBoxPrenomPatient().getSelectedItem().toString();
+        Personne personne = PersonneDao.selectOneByNomAndPrenom(nom, prenom);
+        
+        String jour = "ha";
+        String mois = "ha";
+        String annee = "ha";
     }
     
     /*
