@@ -39,16 +39,17 @@ public class PersonneDao {
         return personne;
     }
 
-    public static Personne selectOneByNom(String nom) throws ClassNotFoundException, SQLException {
+    public static Personne selectOneByNomAndPrenom(String nom, String prenom) throws ClassNotFoundException, SQLException {
 
         Personne personne = null;
 
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
         c.setAutoCommit(false);
-        String sql = "SELECT * FROM PERSONNE WHERE NOM = ?;";
+        String sql = "SELECT * FROM PERSONNE WHERE NOM = ? AND PRENOM = ?;";
         PreparedStatement pstmt = c.prepareStatement(sql);
         pstmt.setString(1, nom);
+        pstmt.setString(2, prenom);
         ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {
             personne = PersonneDao.personneFromResultSet(rs);
@@ -82,7 +83,30 @@ public class PersonneDao {
         c.close();
         return listePersonnes;
     }
-    
+
+    public static ArrayList<Personne> selectAllByNom(String nom) throws SQLException, ClassNotFoundException {
+        ArrayList<Personne> listePersonnes = new ArrayList<Personne>();
+        Personne personne = null;
+
+        Class.forName("org.sqlite.JDBC");
+        Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
+        c.setAutoCommit(false);
+        String sql = "SELECT * FROM PERSONNE WHERE NOM = ?;";
+
+        PreparedStatement pstmt = c.prepareStatement(sql);
+        pstmt.setString(1, nom);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            personne = PersonneDao.personneFromResultSet(rs);
+            listePersonnes.add(personne);
+        }
+        rs.close();
+        pstmt.close();
+
+        c.close();
+        return listePersonnes;
+    }
+
     public static ArrayList<Personne> selectAllOrderByNameASC() throws SQLException, ClassNotFoundException {
         ArrayList<Personne> listePersonnes = new ArrayList<Personne>();
         Personne personne = null;
@@ -105,7 +129,7 @@ public class PersonneDao {
         c.close();
         return listePersonnes;
     }
-    
+
     public static ArrayList<Personne> selectAllOrderByNameDESC() throws SQLException, ClassNotFoundException {
         ArrayList<Personne> listePersonnes = new ArrayList<Personne>();
         Personne personne = null;

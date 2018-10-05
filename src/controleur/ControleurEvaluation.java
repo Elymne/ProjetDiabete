@@ -103,9 +103,9 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(getVue().getjButtonAnnuler())) {
-            quitterVueEvaluation();
-        }
+        if (e.getSource().equals(getVue().getjButtonAnnuler())) { quitterVueEvaluation(); }
+        if (e.getSource().equals(getVue().getjButtonValider())) { quitterVueEvaluation(); }
+        
     }
 
     @Override
