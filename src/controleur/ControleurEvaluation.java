@@ -6,7 +6,10 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import modele.dao.EvaluationDao;
 import modele.dao.PersonneDao;
 import modele.metier.Personne;
 import vue.VueEvaluation;
@@ -16,10 +19,15 @@ import vue.VueEvaluation;
  */
 public class ControleurEvaluation extends ControleurGenerique implements ActionListener, WindowListener{
     
-    public ControleurEvaluation(ControleurPrincipal controleurPrincipal) {
+    Personne personne;
+    
+    public ControleurEvaluation(ControleurPrincipal controleurPrincipal) throws SQLException, ClassNotFoundException {
         super(controleurPrincipal);
         vue = new VueEvaluation();
         vue.addWindowListener(this);
+        remplirJComboBoxNom();
+        getVue().getjComboBoxNomPatient().addActionListener(this);
+        getVue().getjComboBoxPrenomPatient().addActionListener(this);
         getVue().getjButtonAnnuler().addActionListener(this);
         getVue().getjButtonValider().addActionListener(this);
     }
@@ -29,7 +37,8 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
         return (VueEvaluation) vue;
     }
     
-    public void remplirJComboBoxNom() throws SQLException, ClassNotFoundException {
+    public final void remplirJComboBoxNom() throws SQLException, ClassNotFoundException {
+        resetElements();
         ArrayList<Personne> listePersonnes = new ArrayList<>();
         listePersonnes = PersonneDao.selectAll();
         for (Personne personne : listePersonnes) {
@@ -39,39 +48,18 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
 
     public void remplirJComboBoxPrenom() throws SQLException, ClassNotFoundException {
         ArrayList<Personne> listePersonnes = new ArrayList<>();
-        String prenom = (((VueEvaluation) vue).getjComboBoxNomPatient().getSelectedItem().toString());
-        listePersonnes = PersonneDao.selectAllByNom(prenom);
+        String nom = (((VueEvaluation) vue).getjComboBoxNomPatient().getSelectedItem().toString());
+        listePersonnes = PersonneDao.selectAllByNom(nom);
         for (Personne personne : listePersonnes) {
             getVue().getjComboBoxPrenomPatient().addItem(personne.getPrenom());
         }
     }
     
-    public void remplirJTextFieldSexe() throws ClassNotFoundException, SQLException {
-        String nom = getVue().getjComboBoxNomPatient().getSelectedItem().toString();
-        String prenom = getVue().getjComboBoxPrenomPatient().getSelectedItem().toString();
-        Personne personne = PersonneDao.selectOneByNomAndPrenom(nom, prenom);
-        getVue().getjTextFieldSexe().setText(personne.getSexe());
+    public void resetElements() {
+        getVue().getjComboBoxPrenomPatient().removeAllItems();
     }
     
-    public void remplirJTextFieldDate() throws ClassNotFoundException, SQLException {
-        String nom = getVue().getjComboBoxNomPatient().getSelectedItem().toString();
-        String prenom = getVue().getjComboBoxPrenomPatient().getSelectedItem().toString();
-        Personne personne = PersonneDao.selectOneByNomAndPrenom(nom, prenom);
-        
-        String jour = "ha";
-        String mois = "ha";
-        String annee = "ha";
-    }
-    
-    /*
-    public void ajouterEvaluation(){
-        String nom = (((VueEvaluation) vue).getjTextFieldName().getText());
-        String prenom = (((VueEvaluation) vue).getjTextFieldPrenom().getText());
-        String sexe = (((VueEvaluation) vue).getjComboBoxSexe().getSelectedItem().toString());
-        String dateNaissance = 
-                (((VueEvaluation) vue).getjTextFieldDateAnnee().getText()) + "-" 
-                + (((VueEvaluation) vue).getjTextFieldDateMois().getText()) + "-" 
-                + (((VueEvaluation) vue).getjTextFieldDateJour().getText());
+    public void ajouterEvaluation() throws ClassNotFoundException, SQLException{
         double tourTaille =  Double.parseDouble(((VueEvaluation) vue).getjTextFieldTourTaille().getText());
         boolean ActiviteSportive = false;
         if((((VueEvaluation) vue).getjCheckBoxActiviteSportive().isSelected())){
@@ -86,15 +74,30 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
             familleDiabete = true;
         }
         double imc =  Double.parseDouble(((VueEvaluation) vue).getjTextFieldIMC().getText());
+        int alimentationEval = -1;
         String alimentation = (((VueEvaluation) vue).getjComboBoxAlimentation().getSelectedItem().toString());
+        if(alimentation == "Non"){ 
+            alimentationEval = 2 ;
+        }else{
+            if(alimentation =="Pas tous les jours"){
+                alimentationEval = 1;
+            }else{
+                if(alimentation == "Oui"){
+                    alimentationEval = 0;
+                }
+            }
+        }
         boolean tauxGlycemie = false;
         if((((VueEvaluation) vue).getjCheckBoxTauxGlycémie().isSelected())){
             tauxGlycemie = true;
         }
+        String nom = getVue().getjComboBoxNomPatient().getSelectedItem().toString();
+        String prenom = getVue().getjComboBoxPrenomPatient().getSelectedItem().toString();
+        personne = PersonneDao.selectOneByNomAndPrenom(nom, prenom);
+        EvaluationDao.insert(tourTaille, ActiviteSportive, hta, familleDiabete, imc, alimentationEval, tauxGlycemie, personne);
     }
-*/
     
-    public void quitterVueEvaluation() {
+    public void quitterVueEvaluation() throws SQLException, ClassNotFoundException{
         int a = JOptionPane.showConfirmDialog(getVue(), "Annulation de l'evaluation\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
             this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_EVALUATION);
@@ -103,9 +106,35 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(getVue().getjButtonAnnuler())) { quitterVueEvaluation(); }
-        if (e.getSource().equals(getVue().getjButtonValider())) { quitterVueEvaluation(); }
-        
+        if (e.getSource().equals(getVue().getjButtonAnnuler())) {
+            try {
+                quitterVueEvaluation();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControleurEvaluation.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControleurEvaluation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (e.getSource().equals(getVue().getjButtonValider())) {
+            try {
+                ajouterEvaluation();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControleurEvaluation.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControleurEvaluation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (e.getSource().equals(getVue().getjComboBoxNomPatient())) {
+            
+            try {
+                resetElements();
+                remplirJComboBoxPrenom();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControleurEvaluation.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControleurEvaluation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     @Override
@@ -115,7 +144,13 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
 
     @Override
     public void windowClosing(WindowEvent e) {
-        quitterVueEvaluation();
+        try {
+            quitterVueEvaluation();
+        } catch (SQLException ex) {
+            Logger.getLogger(ControleurEvaluation.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ControleurEvaluation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

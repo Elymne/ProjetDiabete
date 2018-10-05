@@ -49,7 +49,7 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
         this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_AJOUTPATIENT);
     }
 
-    public void quitterVueAjoutPatient() {
+    public void quitterVueAjoutPatient() throws SQLException, ClassNotFoundException {
         int a = JOptionPane.showConfirmDialog(getVue(), "Annulation de l'evaluation\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
             this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_AJOUTPATIENT);
@@ -59,7 +59,13 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(getVue().getjButtonAnnuler())) {
-            quitterVueAjoutPatient();
+            try {
+                quitterVueAjoutPatient();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             if (e.getSource().equals(getVue().getjButtonValider())) {
                 if (JOptionPane.showConfirmDialog(null, "Vous êtes sûr ?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {

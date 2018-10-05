@@ -1,6 +1,7 @@
 package controleur;
 
 import static controleur.EnumAction.*;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,7 +22,7 @@ public class ControleurPrincipal {
         controleurMenu.getVue().setEnabled(true);
     }
     
-    public void ActiverControleur(EnumAction action){
+    public void ActiverControleur(EnumAction action) throws SQLException, ClassNotFoundException{
         switch(action){
             case QUITTER_APPLICATION:
                 menuQuitter();
@@ -53,7 +54,7 @@ public class ControleurPrincipal {
         }
     }
     
-    private void accesVueEvaluation() {
+    private void accesVueEvaluation() throws SQLException, ClassNotFoundException {
         if (controleurEvaluation == null) {
             controleurEvaluation = new ControleurEvaluation(this);
         }
