@@ -26,8 +26,8 @@ public class EvaluationDaoTest {
             Personne personne_1 = test1_SelectUniquePersonne(1);
             test1_InsertPersonne(2, "Sara", "Sve", "m", "1927-05-21", "0577777");
             Personne personne_2 = test1_SelectUniquePersonne(2);
-            test1_Insert(1, 10.50, 1, true, false, 90.47, 0, false, personne_1);
-            test1_Insert(2, 24.36, 3, true, true, 90.47, 0, true, personne_2);
+            test1_Insert(1, 10.50, true, true, false, 90.47, 0, false, personne_1);
+            test1_Insert(2, 24.36, false, true, true, 90.47, 0, true, personne_2);
             System.out.println("Test1 effectué : Insertion de données PERSONNE avec comme référence d'id : 1 et 2\n");
             test2_SelectUnique(1);
             System.out.println("Test2 effectué : Selection de l'id 1\n");
@@ -50,7 +50,7 @@ public class EvaluationDaoTest {
         new Connexion();
     }
 
-    public static void test1_Insert(int id, double evaluationTourDeTaille, int evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCDGlycemie, Personne evaluationPersonne) throws SQLException, ClassNotFoundException {
+    public static void test1_Insert(int id, double evaluationTourDeTaille, boolean evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCDGlycemie, Personne evaluationPersonne) throws SQLException, ClassNotFoundException {
         EvaluationDao.insert(evaluationTourDeTaille, evaluationActiviteSportive, evaluationTraitement, evaluationFamillePositive, evaluationMasse, evaluationConsoLegume, evaluationATCDGlycemie, evaluationPersonne);
     }
 

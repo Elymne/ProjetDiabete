@@ -54,7 +54,7 @@ public class ControleurPrincipal {
         }
     }
     
-    private void accesVueEvaluation(){
+    private void accesVueEvaluation() throws SQLException, ClassNotFoundException {
         if (controleurEvaluation == null) {
             controleurEvaluation = new ControleurEvaluation(this);
         }

@@ -156,7 +156,7 @@ public class EvaluationDao {
     
     
     
-    public static void insert(double evaluationTourDeTaille, int evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCDGlycemie, Personne evaluationPersonne) throws ClassNotFoundException, SQLException {
+    public static void insert(double evaluationTourDeTaille, boolean evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCDGlycemie, Personne evaluationPersonne) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
         c.setAutoCommit(false);
@@ -171,7 +171,7 @@ public class EvaluationDao {
                 + "?);";
         try (PreparedStatement pstmt = c.prepareStatement(sql);) {
             pstmt.setDouble(1, evaluationTourDeTaille);
-            pstmt.setInt(2, evaluationActiviteSportive);
+            pstmt.setInt(2, evaluationActiviteSportive ? 1 : 0);
             pstmt.setInt(3, evaluationTraitement ? 1 : 0);
             pstmt.setInt(4, evaluationFamillePositive ? 1 : 0);
             pstmt.setDouble(5, evaluationMasse);

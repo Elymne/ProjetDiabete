@@ -206,7 +206,7 @@ public class PersonneDao {
         c.close();
     }
 
-    public static void delete(int id) throws ClassNotFoundException, SQLException {
+    public static void delete(int id) throws SQLException, ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
         c.setAutoCommit(false);

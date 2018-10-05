@@ -24,7 +24,7 @@ public class PersonneDaoTest {
             System.out.println("Test1 effectué : Insertion de données PERSONNE avec comme référence d'id : 1\n");
             test2_SelectUnique(1);
             System.out.println("Test2 effectué : Selection de l'id 1\n");
-            test3_SelectUniqueName("nomRandom", "prenomRandom");
+            test3_SelectUniqueName("nomRandom","truc");
             System.out.println("Test3 effectué : sélection Unique par nom de personne\n");
             test4_SelectMultiple();
             System.out.println("Test4 effectué : Sélection Multiple\n");
