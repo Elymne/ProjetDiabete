@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import vue.VueMenu;
 
@@ -28,42 +31,64 @@ public class ControleurMenu extends ControleurGenerique implements ActionListene
         return (VueMenu) vue;
     }
     
-    public void quitterApplication() {
+    public void quitterApplication() throws SQLException, ClassNotFoundException {
         int a = JOptionPane.showConfirmDialog(getVue(), "Quitter l'application\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
             this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_APPLICATION);
         }
     }
     
-    public void accesEvaluation() {
+    public void accesEvaluation() throws ClassNotFoundException, ClassNotFoundException {
         this.getControleurPrincipal().ActiverControleur(EnumAction.EVALUATION);
     }
     
-    public void accesListeDiagnostique() {
+    public void accesListeDiagnostique() throws SQLException, ClassNotFoundException {
         this.getControleurPrincipal().ActiverControleur(EnumAction.LISTEDIAGNOSTIQUE);
     }
     
-    public void accesStatistique() {
+    public void accesStatistique() throws SQLException, ClassNotFoundException {
         this.getControleurPrincipal().ActiverControleur(EnumAction.STATISTIQUE);
     }
     
-    public void accesAjoutPatient() {
+    public void accesAjoutPatient() throws SQLException, ClassNotFoundException {
         this.getControleurPrincipal().ActiverControleur(EnumAction.AJOUTPATIENT);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(getVue().getjButtonEvaluation())) {
-            accesEvaluation();
+            try {
+                accesEvaluation();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             if (e.getSource().equals(getVue().getjButtonListeDiagnostique())) {
-                accesListeDiagnostique();
+                try {
+                    accesListeDiagnostique();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 if(e.getSource().equals(getVue().getjButtonStatistique())){
-                    accesStatistique();
+                    try {
+                        accesStatistique();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }else {
                     if(e.getSource().equals(getVue().getjButtonAjoutPatient())){
-                        accesAjoutPatient();
+                        try {
+                            accesAjoutPatient();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                 }
             }
@@ -77,7 +102,13 @@ public class ControleurMenu extends ControleurGenerique implements ActionListene
 
     @Override
     public void windowClosing(WindowEvent e) {
-        quitterApplication();
+        try {
+            quitterApplication();
+        } catch (SQLException ex) {
+            Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
