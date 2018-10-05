@@ -6,8 +6,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modele.dao.PersonneDao;
 import modele.metier.Personne;
@@ -23,7 +21,6 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
         super(controleurPrincipal);
         vue = new VueEvaluation();
         vue.addWindowListener(this);
-        remplirJComboBoxNom();
         getVue().getjButtonAnnuler().addActionListener(this);
         getVue().getjButtonValider().addActionListener(this);
         getVue().getjComboBoxNomPatient().addActionListener(this);
@@ -107,20 +104,11 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(getVue().getjComboBoxNomPatient())) {
-            getVue().getjComboBoxPrenomPatient().removeAllItems();
-            try {
-                remplirJComboBoxPrenom();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControleurEvaluation.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ControleurEvaluation.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            if (e.getSource().equals(getVue().getjButtonAnnuler())) {
-                quitterVueEvaluation();
-            }
+
+        if (e.getSource().equals(getVue().getjButtonAnnuler())) {
+            quitterVueEvaluation();
         }
+
     }
 
     @Override
