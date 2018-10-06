@@ -25,20 +25,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanelListePersonnes" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButtonModifier" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonSupprimer" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButtonRetour" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <Component id="jPanelListePersonnes" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,13 +35,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanelListePersonnes" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonModifier" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonSupprimer" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonRetour" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -69,11 +51,23 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jPanelInformationPatient" max="32767" attributes="0"/>
-                              <Component id="jPanelResultatPatient" pref="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jButtonModifier" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButtonSupprimer" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jButtonRetour" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jScrollPaneListeNoms" min="-2" pref="444" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jPanelInformationPatient" max="32767" attributes="0"/>
+                                      <Component id="jPanelResultatPatient" pref="616" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -93,9 +87,15 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jPanelResultatPatient" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Component id="jScrollPaneListeNoms" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButtonModifier" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonSupprimer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonRetour" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -501,7 +501,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+        <Container class="javax.swing.JScrollPane" name="jScrollPaneListeNoms">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -522,22 +522,22 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="jButtonModifier">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Modifier diagnostique"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonSupprimer">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Supprimer diagnostique"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonRetour">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Retour"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButtonModifier">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Modifier diagnostique"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonSupprimer">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Supprimer diagnostique"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonRetour">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Retour"/>
-      </Properties>
-    </Component>
   </SubComponents>
 </Form>

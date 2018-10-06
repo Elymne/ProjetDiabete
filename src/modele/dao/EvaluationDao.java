@@ -239,7 +239,7 @@ public class EvaluationDao {
         Evaluation clt = null;
         int id = rs.getInt("ID");
         double evaluationTourDeTaille = rs.getInt("TOURDETAILLE");
-        int evaluationActiviteSportive = rs.getInt("ACTIVITESPORTIVE");
+        boolean evaluationActiviteSportive = rs.getInt("ACTIVITESPORTIVE") != 0;
         boolean evaluationTraitement = rs.getInt("TRAITEMENT") != 0;
         boolean evaluationFamillePositive = rs.getInt("FAMILLEPOSITIVE") != 0;
         double evaluationMasse = rs.getInt("MASSE");

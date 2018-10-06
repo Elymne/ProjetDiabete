@@ -13,7 +13,7 @@ public class Evaluation {
 
     private int id;
     private double evaluationTourDeTaille;
-    private int evaluationActiviteSportive;
+    private boolean evaluationActiviteSportive;
     private boolean evaluationTraitement;
     private boolean evaluationFamillePositive;
     private double evaluationMasse;
@@ -21,7 +21,7 @@ public class Evaluation {
     private boolean evaluationATCDGlycemie;
     private Personne evaluationPersonne;
 
-    public Evaluation(int id, double evaluationTourDeTaille, int evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCD, Personne evaluationPersonne) {
+    public Evaluation(int id, double evaluationTourDeTaille, boolean evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCD, Personne evaluationPersonne) {
         this.id = id;
         this.evaluationTourDeTaille = evaluationTourDeTaille;
         this.evaluationActiviteSportive = evaluationActiviteSportive;
@@ -46,15 +46,15 @@ public class Evaluation {
         this.evaluationTourDeTaille = evaluationTourDeTaille;
     }
 
-    public int getEvaluationActiviteSportive() {
+    public boolean getEvaluationActiviteSportive() {
         return evaluationActiviteSportive;
     }
 
-    public void setEvaluationActiviteSportive(int evaluationActiviteSportive) {
+    public void setEvaluationActiviteSportive(boolean evaluationActiviteSportive) {
         this.evaluationActiviteSportive = evaluationActiviteSportive;
     }
 
-    public boolean isEvaluationTraitement() {
+    public boolean getEvaluationTraitement() {
         return evaluationTraitement;
     }
 
@@ -62,7 +62,7 @@ public class Evaluation {
         this.evaluationTraitement = evaluationTraitement;
     }
 
-    public boolean isEvaluationFamillePositive() {
+    public boolean getEvaluationFamillePositive() {
         return evaluationFamillePositive;
     }
 
@@ -86,7 +86,7 @@ public class Evaluation {
         this.evaluationConsoLegume = evluationConsoLegume;
     }
 
-    public boolean isEvaluationATCD() {
+    public boolean getEvaluationATCD() {
         return evaluationATCDGlycemie;
     }
 
@@ -110,7 +110,7 @@ public class Evaluation {
         this.id = id;
     }
 
-    public boolean isEvaluationATCDGlycemie() {
+    public boolean setEvaluationATCDGlycemie() {
         return evaluationATCDGlycemie;
     }
 

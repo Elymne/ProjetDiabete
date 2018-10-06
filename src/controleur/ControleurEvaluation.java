@@ -95,6 +95,7 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
         String prenom = getVue().getjComboBoxPrenomPatient().getSelectedItem().toString();
         personne = PersonneDao.selectOneByNomAndPrenom(nom, prenom);
         EvaluationDao.insert(tourTaille, ActiviteSportive, hta, familleDiabete, imc, alimentationEval, tauxGlycemie, personne);
+        this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_EVALUATION);
     }
     
     public void quitterVueEvaluation() throws SQLException, ClassNotFoundException{

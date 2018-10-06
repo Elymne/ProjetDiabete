@@ -27,11 +27,11 @@ public class VueListeDiagnostique extends VueGenerique {
         jTableListeNoms.setModel(modeleTableListeNoms);
     }
     
-    public DefaultTableModel getModeleTableListeNoms() {
+    public DefaultTableModel getModeleTableListeDiagnostiques() {
         return modeleTableListeNoms;
     }
 
-    public JTable getTableRepresentation() {
+    public JTable getTableListeDiagnostiques() {
         return jTableListeNoms;
     }
     
@@ -87,7 +87,7 @@ public class VueListeDiagnostique extends VueGenerique {
         jTextFieldScoreTotal = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jTextFieldRisque = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPaneListeNoms = new javax.swing.JScrollPane();
         jTableListeNoms = new javax.swing.JTable();
         jButtonModifier = new javax.swing.JButton();
         jButtonSupprimer = new javax.swing.JButton();
@@ -339,7 +339,13 @@ public class VueListeDiagnostique extends VueGenerique {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTableListeNoms);
+        jScrollPaneListeNoms.setViewportView(jTableListeNoms);
+
+        jButtonModifier.setText("Modifier diagnostique");
+
+        jButtonSupprimer.setText("Supprimer diagnostique");
+
+        jButtonRetour.setText("Retour");
 
         javax.swing.GroupLayout jPanelListePersonnesLayout = new javax.swing.GroupLayout(jPanelListePersonnes);
         jPanelListePersonnes.setLayout(jPanelListePersonnesLayout);
@@ -350,11 +356,20 @@ public class VueListeDiagnostique extends VueGenerique {
                 .addGroup(jPanelListePersonnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelListePersonnesLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(9, 9, 9)
                         .addGroup(jPanelListePersonnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanelInformationPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanelResultatPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                            .addGroup(jPanelListePersonnesLayout.createSequentialGroup()
+                                .addComponent(jButtonModifier)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonSupprimer)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonRetour))
+                            .addGroup(jPanelListePersonnesLayout.createSequentialGroup()
+                                .addComponent(jScrollPaneListeNoms, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelListePersonnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanelInformationPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanelResultatPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 616, Short.MAX_VALUE))))))
                 .addGap(0, 23, Short.MAX_VALUE))
         );
         jPanelListePersonnesLayout.setVerticalGroup(
@@ -368,15 +383,14 @@ public class VueListeDiagnostique extends VueGenerique {
                         .addComponent(jPanelInformationPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanelResultatPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPaneListeNoms))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelListePersonnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonModifier)
+                    .addComponent(jButtonSupprimer)
+                    .addComponent(jButtonRetour))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
-
-        jButtonModifier.setText("Modifier diagnostique");
-
-        jButtonSupprimer.setText("Supprimer diagnostique");
-
-        jButtonRetour.setText("Retour");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -384,29 +398,15 @@ public class VueListeDiagnostique extends VueGenerique {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanelListePersonnes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonModifier)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonSupprimer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonRetour)
-                        .addGap(27, 27, 27))))
+                .addComponent(jPanelListePersonnes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelListePersonnes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModifier)
-                    .addComponent(jButtonSupprimer)
-                    .addComponent(jButtonRetour))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -487,7 +487,7 @@ public class VueListeDiagnostique extends VueGenerique {
     private javax.swing.JPanel jPanelInformationPatient;
     private javax.swing.JPanel jPanelListePersonnes;
     private javax.swing.JPanel jPanelResultatPatient;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPaneListeNoms;
     private javax.swing.JTable jTableListeNoms;
     private javax.swing.JTextField jTextFieldATCDGlycemie;
     private javax.swing.JTextField jTextFieldATCDGlycemieScore;
