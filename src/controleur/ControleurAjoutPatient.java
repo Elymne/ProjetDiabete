@@ -50,7 +50,7 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
     }
 
     public void quitterVueAjoutPatient() throws SQLException, ClassNotFoundException {
-        int a = JOptionPane.showConfirmDialog(getVue(), "Annulation de l'evaluation\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int a = JOptionPane.showConfirmDialog(getVue(), "Annulation de l'ajout d'un patient\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
             this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_AJOUTPATIENT);
         }
@@ -89,7 +89,13 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
 
     @Override
     public void windowClosing(WindowEvent e) {
-
+        try {
+            quitterVueAjoutPatient();
+        } catch (SQLException ex) {
+            Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
