@@ -6,15 +6,8 @@ import java.util.List;
 import modele.dao.PersonneDao;
 import modele.metier.Personne;
 
-/**
- *
- * @author Elymne
- */
 public class PersonneDaoTest {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
 
         try {

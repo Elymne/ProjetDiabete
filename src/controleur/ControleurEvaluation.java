@@ -13,10 +13,7 @@ import modele.dao.EvaluationDao;
 import modele.dao.PersonneDao;
 import modele.metier.Personne;
 import vue.VueEvaluation;
-/**
- *
- * @author Elymne
- */
+
 public class ControleurEvaluation extends ControleurGenerique implements ActionListener, WindowListener{
     
     Personne personne;

@@ -10,10 +10,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import vue.VueMenu;
 
-/**
- *
- * @author Elymne
- */
 public class ControleurMenu extends ControleurGenerique implements ActionListener, WindowListener {
 
     public ControleurMenu(ControleurPrincipal controleurPrincipal) {

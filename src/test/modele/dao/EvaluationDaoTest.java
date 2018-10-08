@@ -8,15 +8,8 @@ import modele.dao.PersonneDao;
 import modele.metier.Evaluation;
 import modele.metier.Personne;
 
-/**
- *
- * @author Elymne
- */
 public class EvaluationDaoTest {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
 
         try {

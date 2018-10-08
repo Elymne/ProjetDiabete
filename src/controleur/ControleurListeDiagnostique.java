@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controleur;
 
 import java.awt.event.ActionEvent;
@@ -20,10 +15,6 @@ import modele.dao.EvaluationDao;
 import modele.metier.Evaluation;
 import vue.VueListeDiagnostique;
 
-/**
- *
- * @author Elymne
- */
 public class ControleurListeDiagnostique extends ControleurGenerique implements ActionListener, WindowListener, TableModelListener{
     
     private ArrayList<Evaluation> lesEvaluations;
