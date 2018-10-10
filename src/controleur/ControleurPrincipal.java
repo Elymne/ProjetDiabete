@@ -4,15 +4,12 @@ import static controleur.EnumAction.*;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Elymne
- */
 public class ControleurPrincipal {
     
     private ControleurMenu controleurMenu = null;
     private ControleurEvaluation controleurEvaluation = null;
     private ControleurAjoutPatient controleurAjoutPatient = null;
+    private ControleurListeDiagnostique controleurListeDiagnostique = null;
     
     public void ActiverControleur(){
         if(controleurMenu==null){
@@ -40,10 +37,10 @@ public class ControleurPrincipal {
                 quitterVueAjoutPatient();
                 break;
             case LISTEDIAGNOSTIQUE:
-                System.out.println("Non");
+                accesVueListeDiagnostique();
                 break;
             case QUITTER_LISTEDIAGNOSTIQUE:
-                System.out.println("Non");
+                quitterVueListeDiagnostique();
                 break;
             case STATISTIQUE:
                 System.out.println("Non");
@@ -86,6 +83,23 @@ public class ControleurPrincipal {
         controleurMenu.getVue().setEnabled(true);
         controleurAjoutPatient.getVue().setVisible(false);
         controleurAjoutPatient = null;
+    }
+    
+    private void accesVueListeDiagnostique() throws SQLException, ClassNotFoundException {
+        if (controleurListeDiagnostique == null) {
+            controleurListeDiagnostique = new ControleurListeDiagnostique(this);
+        }
+        controleurMenu.getVue().setEnabled(false);
+        controleurListeDiagnostique.getVue().setVisible(true);
+    }
+    
+    private void quitterVueListeDiagnostique(){
+        if (controleurMenu == null) {
+            controleurMenu = new ControleurMenu(this);
+        }
+        controleurMenu.getVue().setEnabled(true);
+        controleurListeDiagnostique.getVue().setVisible(false);
+        controleurListeDiagnostique = null;
     }
     
     private void menuQuitter() {

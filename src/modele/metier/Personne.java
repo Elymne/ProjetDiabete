@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modele.metier;
 
-/**
- *
- * @author Elymne
- */
 public class Personne {
 
     private int id;
@@ -17,18 +8,28 @@ public class Personne {
     private String sexe;
     private String dateNaissance;
     private String securiteSociale;
+    private int age;
 
-    public Personne(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) {
+    public Personne(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale, int age) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
         this.dateNaissance = dateNaissance;
         this.securiteSociale = securiteSociale;
+        this.age = age;
     }
 
     public String toString() {
-        return ("Personne{" + "id=" + this.getId() + ", nom=" + this.getNom() + ", prenom=" + this.getPrenom() + ", sexe=" + this.getSexe() + ", dateNaissance=" + this.getDateNaissance() + ", securiteSociale=" + this.getSecuriteSociale() + '}');
+        return ("Personne{" + "id=" + this.getId() + ", nom=" + this.getNom() + ", prenom=" + this.getPrenom() + ", sexe=" + this.getSexe() + ", dateNaissance=" + this.getDateNaissance() + ", securiteSociale=" + this.getSecuriteSociale() + ", age=" + this.getAge() +'}');
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getNom() {

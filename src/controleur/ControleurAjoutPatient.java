@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controleur;
 
 import java.awt.event.ActionEvent;
@@ -10,16 +5,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modele.dao.PersonneDao;
 import vue.VueAjoutPatient;
 
-/**
- *
- * @author Elymne
- */
 public class ControleurAjoutPatient extends ControleurGenerique implements ActionListener, WindowListener {
 
     public ControleurAjoutPatient(ControleurPrincipal controleurPrincipal) {
@@ -44,13 +37,23 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
                 + (((VueAjoutPatient) vue).getjTextFieldDateMois().getText()) + "-"
                 + (((VueAjoutPatient) vue).getjTextFieldDateJour().getText());
         String securiteSociale = (((VueAjoutPatient) vue).getjTextFieldSecuriteSociale().getText());
+        
+        
+        
+        String ddYear = (((VueAjoutPatient) vue).getjTextFieldDateAnnee().getText());
+	LocalDateTime now = LocalDateTime.now();
+        String ccYear = Integer.toString(now.getYear());
+        
+        int age;
+        age = Integer.parseInt(ccYear)-Integer.parseInt(ddYear);
+        
 
-        PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale);
+        PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale, age);
         this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_AJOUTPATIENT);
     }
 
     public void quitterVueAjoutPatient() throws SQLException, ClassNotFoundException {
-        int a = JOptionPane.showConfirmDialog(getVue(), "Annulation de l'evaluation\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int a = JOptionPane.showConfirmDialog(getVue(), "Annulation de l'ajout d'un patient\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
             this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_AJOUTPATIENT);
         }
@@ -89,7 +92,13 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
 
     @Override
     public void windowClosing(WindowEvent e) {
-
+        try {
+            quitterVueAjoutPatient();
+        } catch (SQLException ex) {
+            Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

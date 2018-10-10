@@ -1,9 +1,5 @@
 package controleur;
 
-/**
- *
- * @author Elymne
- */
 public enum EnumAction {
     
     QUITTER_APPLICATION,

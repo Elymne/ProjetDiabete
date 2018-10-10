@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modele.dao;
 
 import java.sql.Connection;
@@ -13,10 +8,6 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import modele.metier.Personne;
 
-/**
- *
- * @author Elymne
- */
 public class PersonneDao {
 
     public static Personne selectOneById(int id) throws ClassNotFoundException, SQLException {
@@ -153,12 +144,13 @@ public class PersonneDao {
         return listePersonnes;
     }
 
-    public static void insert(String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws ClassNotFoundException, SQLException {
+    public static void insert(String nom, String prenom, String sexe, String dateNaissance, String securiteSociale, int age) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
         c.setAutoCommit(false);
-        String sql = "INSERT INTO PERSONNE (NOM,PRENOM,SEXE,DATENAISSANCE,SECURITESOCIALE) "
+        String sql = "INSERT INTO PERSONNE (NOM,PRENOM,SEXE,DATENAISSANCE,SECURITESOCIALE,AGE) "
                 + "VALUES (?,"
+                + "?,"
                 + "?,"
                 + "?,"
                 + "?,"
@@ -170,6 +162,7 @@ public class PersonneDao {
             pstmt.setString(3, sexe);
             pstmt.setString(4, dateNaissance);
             pstmt.setString(5, securiteSociale);
+            pstmt.setInt(6, age);
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {
@@ -179,7 +172,7 @@ public class PersonneDao {
         c.close();
     }
 
-    public static void update(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws ClassNotFoundException, SQLException {
+    public static void update(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale, int age) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
         c.setAutoCommit(false);
@@ -189,6 +182,7 @@ public class PersonneDao {
                 + " SEXE =  ?,"
                 + " DATENAISSANCE = ?,"
                 + " SECURITESOCIALE = ?"
+                + " AGE = ?"
                 + " where ID=?;";
         try (PreparedStatement pstmt = c.prepareStatement(sql);) {
             pstmt.setString(1, nom);
@@ -196,7 +190,8 @@ public class PersonneDao {
             pstmt.setString(3, sexe);
             pstmt.setString(4, dateNaissance);
             pstmt.setString(5, securiteSociale);
-            pstmt.setInt(6, id);
+            pstmt.setInt(6, age);
+            pstmt.setInt(7, id);
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {
@@ -230,7 +225,8 @@ public class PersonneDao {
         String sexe = rs.getString("SEXE");
         String dateNaissance = rs.getString("DATENAISSANCE");
         String securiteSociale = rs.getString("SECURITESOCIALE");
-        clt = new Personne(id, nom, prenom, sexe, dateNaissance, securiteSociale);
+        int age = rs.getInt("AGE");
+        clt = new Personne(id, nom, prenom, sexe, dateNaissance, securiteSociale, age);
         return clt;
     }
 }

@@ -10,10 +10,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import vue.VueMenu;
 
-/**
- *
- * @author Elymne
- */
 public class ControleurMenu extends ControleurGenerique implements ActionListener, WindowListener {
 
     public ControleurMenu(ControleurPrincipal controleurPrincipal) {
@@ -69,6 +65,15 @@ public class ControleurMenu extends ControleurGenerique implements ActionListene
             try {
                 accesAjoutPatient();
 
+            } catch (SQLException ex) {
+                Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (e.getSource().equals(getVue().getjButtonListeDiagnostique())){
+            try {
+                accesListeDiagnostique();
             } catch (SQLException ex) {
                 Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {

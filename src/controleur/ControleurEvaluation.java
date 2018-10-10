@@ -14,10 +14,6 @@ import modele.dao.PersonneDao;
 import modele.metier.Personne;
 import vue.VueEvaluation;
 
-/**
- *
- * @author Elymne
- */
 public class ControleurEvaluation extends ControleurGenerique implements ActionListener, WindowListener{
     
     Personne personne;
@@ -84,7 +80,7 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
             if(alimentation =="Pas tous les jours"){
                 alimentationEval = 1;
             }else{
-                if(alimentation == "Oui"){
+                if(alimentation == "Tous les jours"){
                     alimentationEval = 0;
                 }
             }
@@ -97,6 +93,7 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
         String prenom = getVue().getjComboBoxPrenomPatient().getSelectedItem().toString();
         personne = PersonneDao.selectOneByNomAndPrenom(nom, prenom);
         EvaluationDao.insert(tourTaille, ActiviteSportive, hta, familleDiabete, imc, alimentationEval, tauxGlycemie, personne);
+        this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_EVALUATION);
     }
     
     public void quitterVueEvaluation() throws SQLException, ClassNotFoundException{
@@ -120,7 +117,10 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
         }
         if (e.getSource().equals(getVue().getjButtonValider())) {
             try {
-                ajouterEvaluation();
+                int a = JOptionPane.showConfirmDialog(getVue(), "Validation de l'evaluation\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (a == JOptionPane.YES_OPTION) {
+                   ajouterEvaluation(); 
+                } 
             } catch (SQLException ex) {
                 Logger.getLogger(ControleurEvaluation.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {

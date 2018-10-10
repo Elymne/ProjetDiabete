@@ -2,10 +2,6 @@ package controleur;
 
 import vue.VueGenerique;
 
-/**
- *
- * @author Elymne
- */
 public abstract class ControleurGenerique {
     
     protected VueGenerique vue = null;
