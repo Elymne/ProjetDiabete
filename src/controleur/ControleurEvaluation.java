@@ -79,7 +79,7 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
             if(alimentation =="Pas tous les jours"){
                 alimentationEval = 1;
             }else{
-                if(alimentation == "Oui"){
+                if(alimentation == "Tous les jours"){
                     alimentationEval = 0;
                 }
             }
@@ -115,7 +115,10 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
         }
         if (e.getSource().equals(getVue().getjButtonValider())) {
             try {
-                ajouterEvaluation();
+                int a = JOptionPane.showConfirmDialog(getVue(), "Validation de l'evaluation\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (a == JOptionPane.YES_OPTION) {
+                   ajouterEvaluation(); 
+                } 
             } catch (SQLException ex) {
                 Logger.getLogger(ControleurEvaluation.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {

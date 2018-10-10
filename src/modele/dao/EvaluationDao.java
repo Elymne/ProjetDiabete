@@ -5,13 +5,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import modele.metier.Evaluation;
 import modele.metier.Personne;
 
 public class EvaluationDao {
     
-    public static Evaluation selectOneById(int id) throws ClassNotFoundException, SQLException {
+    public static Evaluation selectOneById(int id) throws ClassNotFoundException, SQLException, ParseException {
         Evaluation evaluation = null;
 
         Class.forName("org.sqlite.JDBC");
@@ -31,7 +32,7 @@ public class EvaluationDao {
         return evaluation;
     }
     
-    public static Evaluation selectOneByIdPersonne(int id) throws ClassNotFoundException, SQLException {
+    public static Evaluation selectOneByIdPersonne(int id) throws ClassNotFoundException, SQLException, ParseException {
         Evaluation evaluation = null;
 
         Class.forName("org.sqlite.JDBC");
@@ -51,7 +52,7 @@ public class EvaluationDao {
         return evaluation;
     }
     
-    public static ArrayList<Evaluation> selectAll() throws SQLException, ClassNotFoundException {
+    public static ArrayList<Evaluation> selectAll() throws SQLException, ClassNotFoundException, ParseException {
         ArrayList<Evaluation> listeEvaluations = new ArrayList<Evaluation>();
         Evaluation evaluation = null;
 
@@ -74,7 +75,7 @@ public class EvaluationDao {
         return listeEvaluations;
     }
     
-    public static ArrayList<Evaluation> selectAllSexeFeminin() throws SQLException, ClassNotFoundException {
+    public static ArrayList<Evaluation> selectAllSexeFeminin() throws SQLException, ClassNotFoundException, ParseException {
         ArrayList<Evaluation> listeEvaluations = new ArrayList<Evaluation>();
         Evaluation evaluation = null;
 
@@ -97,7 +98,7 @@ public class EvaluationDao {
         return listeEvaluations;
     }
     
-    public static ArrayList<Evaluation> selectAllSexeMasculin() throws SQLException, ClassNotFoundException {
+    public static ArrayList<Evaluation> selectAllSexeMasculin() throws SQLException, ClassNotFoundException, ParseException {
         ArrayList<Evaluation> listeEvaluations = new ArrayList<Evaluation>();
         Evaluation evaluation = null;
 
@@ -120,7 +121,7 @@ public class EvaluationDao {
         return listeEvaluations;
     }
     
-    public static ArrayList<Evaluation> selectAllByAge(int ageMin, int ageMax) throws SQLException, ClassNotFoundException {
+    public static ArrayList<Evaluation> selectAllByAge(int ageMin, int ageMax) throws SQLException, ClassNotFoundException, ParseException {
         ArrayList<Evaluation> listeEvaluations = new ArrayList<Evaluation>();
         Evaluation evaluation = null;
 
@@ -226,7 +227,7 @@ public class EvaluationDao {
     }
     
 
-    private static Evaluation evaluationFromResultSet(ResultSet rs) throws SQLException, ClassNotFoundException {
+    private static Evaluation evaluationFromResultSet(ResultSet rs) throws SQLException, ClassNotFoundException, ParseException {
         Evaluation clt = null;
         int id = rs.getInt("ID");
         double evaluationTourDeTaille = rs.getInt("TOURDETAILLE");

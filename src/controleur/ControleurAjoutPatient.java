@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -35,8 +37,18 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
                 + (((VueAjoutPatient) vue).getjTextFieldDateMois().getText()) + "-"
                 + (((VueAjoutPatient) vue).getjTextFieldDateJour().getText());
         String securiteSociale = (((VueAjoutPatient) vue).getjTextFieldSecuriteSociale().getText());
+        
+        
+        
+        String ddYear = (((VueAjoutPatient) vue).getjTextFieldDateAnnee().getText());
+	LocalDateTime now = LocalDateTime.now();
+        String ccYear = Integer.toString(now.getYear());
+        
+        int age;
+        age = Integer.parseInt(ccYear)-Integer.parseInt(ddYear);
+        
 
-        PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale);
+        PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale, age);
         this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_AJOUTPATIENT);
     }
 

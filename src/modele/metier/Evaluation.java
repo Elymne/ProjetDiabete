@@ -1,5 +1,7 @@
 package modele.metier;
 
+import java.text.ParseException;
+
 public class Evaluation {
 
     private int id;
@@ -12,7 +14,7 @@ public class Evaluation {
     private boolean evaluationATCDGlycemie;
     private Personne evaluationPersonne;
 
-    public Evaluation(int id, double evaluationTourDeTaille, boolean evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCD, Personne evaluationPersonne) {
+    public Evaluation(int id, double evaluationTourDeTaille, boolean evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCD, Personne evaluationPersonne) throws ParseException {
         this.id = id;
         this.evaluationTourDeTaille = evaluationTourDeTaille;
         this.evaluationActiviteSportive = evaluationActiviteSportive;
@@ -101,12 +103,11 @@ public class Evaluation {
         this.id = id;
     }
 
-    public boolean setEvaluationATCDGlycemie() {
+    public boolean getEvaluationATCDGlycemie() {
         return evaluationATCDGlycemie;
     }
 
     public void setEvaluationATCDGlycemie(boolean evaluationATCDGlycemie) {
         this.evaluationATCDGlycemie = evaluationATCDGlycemie;
     }
-
 }

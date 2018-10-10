@@ -85,7 +85,7 @@ public class ControleurPrincipal {
         controleurAjoutPatient = null;
     }
     
-    private void accesVueListeDiagnostique() {
+    private void accesVueListeDiagnostique() throws SQLException, ClassNotFoundException {
         if (controleurListeDiagnostique == null) {
             controleurListeDiagnostique = new ControleurListeDiagnostique(this);
         }

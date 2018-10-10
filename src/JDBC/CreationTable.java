@@ -32,7 +32,8 @@ public class CreationTable {
                     + " PRENOM    TEXT    NOT NULL, "
                     + " SEXE    CHAR(1), "
                     + " DATENAISSANCE    DATE, "
-                    + " SECURITESOCIALE TEXT"
+                    + " SECURITESOCIALE TEXT,"
+                    + " AGE INTEGER"
                     + ");";
 
             stmt.executeUpdate(sql);

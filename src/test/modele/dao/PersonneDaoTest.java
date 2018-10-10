@@ -13,15 +13,15 @@ public class PersonneDaoTest {
         try {
             test0_Connexion();
             System.out.println("Test0 effectué : connexion\n");
-            test1_Insert(1, "nomRandom", "prenomRandom", "sexeRandom", "2014-12-01", "securitéSocialeRandom");
+            test1_Insert(1, "nomRandom", "prenomRandom", "sexeRandom", "2014-12-01", "securitéSocialeRandom", 45);
             System.out.println("Test1 effectué : Insertion de données PERSONNE avec comme référence d'id : 1\n");
             test2_SelectUnique(1);
             System.out.println("Test2 effectué : Selection de l'id 1\n");
-            test3_SelectUniqueName("nomRandom","truc");
+            test3_SelectUniqueName("nomRandom","prenomRandom");
             System.out.println("Test3 effectué : sélection Unique par nom de personne\n");
             test4_SelectMultiple();
             System.out.println("Test4 effectué : Sélection Multiple\n");
-            test5_Update(1, "nomMoinsRandomMODIFIE", "prenomMoinsRandomMODIFIE", "sexeMoinsRandomMODIFIE", "0000-00-00", "securitéSocialeMoinsRandomMODIFIE");
+            test5_Update(1, "nomMoinsRandomMODIFIE", "prenomMoinsRandomMODIFIE", "sexeMoinsRandomMODIFIE", "0000-00-00", "securitéSocialeMoinsRandomMODIFIE", 45);
             System.out.println("Test5 effectué : Modification des données dans la table Personne (Ligne id = 1 )\n");
             test6_Delete(1);
             test4_SelectMultiple();
@@ -37,8 +37,8 @@ public class PersonneDaoTest {
         new Connexion();
     }
 
-    public static void test1_Insert(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws SQLException, ClassNotFoundException {
-        PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale);
+    public static void test1_Insert(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale, int age) throws SQLException, ClassNotFoundException {
+        PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale, age);
     }
 
     public static void test2_SelectUnique(int id) throws SQLException, ClassNotFoundException {
@@ -60,8 +60,8 @@ public class PersonneDaoTest {
         System.out.println("}");
     }
 
-    public static void test5_Update(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws SQLException, ClassNotFoundException {
-        PersonneDao.update(id, nom, prenom, sexe, dateNaissance, securiteSociale);
+    public static void test5_Update(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale, int age) throws SQLException, ClassNotFoundException {
+        PersonneDao.update(id, nom, prenom, sexe, dateNaissance, securiteSociale, age);
         Personne personne = PersonneDao.selectOneById(id);
         System.out.println("Personne n° : " + id + " : " + personne.toString());
     }

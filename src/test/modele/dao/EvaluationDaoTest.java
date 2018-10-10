@@ -2,6 +2,7 @@ package test.modele.dao;
 
 import JDBC.Connexion;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 import modele.dao.EvaluationDao;
 import modele.dao.PersonneDao;
@@ -10,14 +11,14 @@ import modele.metier.Personne;
 
 public class EvaluationDaoTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         try {
             test0_Connexion();
             System.out.println("Test0 effectué : connexion\n");
-            test1_InsertPersonne(1, "Jean", "Bonisseur de Labatte", "m", "1927-01-24", "0547777");
+            test1_InsertPersonne(1, "Jean", "Bonisseur de Labatte", "m", "1927-01-24", "0547777", 47);
             Personne personne_1 = test1_SelectUniquePersonne(1);
-            test1_InsertPersonne(2, "Sara", "Sve", "m", "1927-05-21", "0577777");
+            test1_InsertPersonne(2, "Sara", "Sve", "m", "1927-05-21", "0577777", 89);
             Personne personne_2 = test1_SelectUniquePersonne(2);
             test1_Insert(1, 10.50, true, true, false, 90.47, 0, false, personne_1);
             test1_Insert(2, 24.36, false, true, true, 90.47, 0, true, personne_2);
@@ -47,12 +48,12 @@ public class EvaluationDaoTest {
         EvaluationDao.insert(evaluationTourDeTaille, evaluationActiviteSportive, evaluationTraitement, evaluationFamillePositive, evaluationMasse, evaluationConsoLegume, evaluationATCDGlycemie, evaluationPersonne);
     }
 
-    public static void test2_SelectUnique(int id) throws SQLException, ClassNotFoundException {
+    public static void test2_SelectUnique(int id) throws SQLException, ClassNotFoundException, ParseException {
         Evaluation evaluation = EvaluationDao.selectOneById(id);
         System.out.println("Evaluation n° : " + id + " : " + evaluation.toString());
     }
 
-    public static void test4_SelectMultiple() throws SQLException, ClassNotFoundException {
+    public static void test4_SelectMultiple() throws SQLException, ClassNotFoundException, ParseException {
         List<Evaluation> desEvaluation = EvaluationDao.selectAll();
         System.out.println("Les évaluations {");
         for (Evaluation evaluation : desEvaluation) {
@@ -61,7 +62,7 @@ public class EvaluationDaoTest {
         System.out.println("}");
     }
 
-    public static void test5_Update(int id, double evaluationTourDeTaille, int evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCDGlycemie) throws SQLException, ClassNotFoundException {
+    public static void test5_Update(int id, double evaluationTourDeTaille, int evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCDGlycemie) throws SQLException, ClassNotFoundException, ParseException {
         EvaluationDao.update(id, evaluationTourDeTaille, evaluationActiviteSportive, evaluationTraitement, evaluationFamillePositive, evaluationMasse, evaluationConsoLegume, evaluationATCDGlycemie);
         Evaluation evaluation = EvaluationDao.selectOneById(id);
         System.out.println("Personne n° : " + id + " : " + evaluation.toString());
@@ -76,8 +77,8 @@ public class EvaluationDaoTest {
         return personne;
     }
 
-    public static void test1_InsertPersonne(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale) throws SQLException, ClassNotFoundException {
-        PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale);
+    public static void test1_InsertPersonne(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale, int age) throws SQLException, ClassNotFoundException {
+        PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale, age);
     }
 
 }
