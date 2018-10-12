@@ -2,6 +2,9 @@ package controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import static java.awt.event.KeyEvent.VK_ENTER;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.SQLException;
@@ -12,12 +15,14 @@ import javax.swing.JOptionPane;
 import modele.dao.PersonneDao;
 import vue.VueAjoutPatient;
 
-public class ControleurAjoutPatient extends ControleurGenerique implements ActionListener, WindowListener {
+public class ControleurAjoutPatient extends ControleurGenerique implements ActionListener, WindowListener, KeyListener {
 
     public ControleurAjoutPatient(ControleurPrincipal controleurPrincipal) {
         super(controleurPrincipal);
         vue = new VueAjoutPatient();
+        vue.setFocusable(true);
         vue.addWindowListener(this);
+        vue.addKeyListener(this);
         getVue().getjButtonAnnuler().addActionListener(this);
         getVue().getjButtonValider().addActionListener(this);
     }
@@ -46,6 +51,7 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
             age = Integer.parseInt(ccYear) - Integer.parseInt(ddYear);
 
             PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale, age);
+            vue.setFocusable(false);
             this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_AJOUTPATIENT);
         }
     }
@@ -96,6 +102,7 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
     public void quitterVueAjoutPatient() throws SQLException, ClassNotFoundException {
         int a = JOptionPane.showConfirmDialog(getVue(), "Annulation de l'ajout d'un patient\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
+            vue.setFocusable(false);
             this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_AJOUTPATIENT);
         }
     }
@@ -121,14 +128,8 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
                         Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-
             }
         }
-    }
-
-    @Override
-    public void windowOpened(WindowEvent e) {
-
     }
 
     @Override
@@ -140,6 +141,28 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        System.out.println(e.getKeyCode() + "KEYTYPED");
+        
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            System.out.println("CONNARD QUAND CA MARCHE");
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
     }
 
     @Override
