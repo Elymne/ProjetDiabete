@@ -48,7 +48,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+          <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -96,7 +96,7 @@
                       </Group>
                       <Component id="jPanelInformation" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace pref="101" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -312,22 +312,30 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelErrorNom">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Le pr&#xe9;nom n&apos;est pas valide"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="cc" type="rgb"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelErrorPrenom">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Le pr&#xe9;nom n&apos;est pas valide"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="cc" type="rgb"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelErrorDateNaissance">
               <Properties>
-                <Property name="text" type="java.lang.String" value="La date de naissance n&apos;est pas valide"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="cc" type="rgb"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelErrorCodeSecuriteSociale">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Le code de s&#xe9;curit&#xe9; sociale n&apos;est pas valide"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="cc" type="rgb"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>

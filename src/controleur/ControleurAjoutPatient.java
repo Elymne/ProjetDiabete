@@ -6,7 +6,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -29,27 +28,69 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
     }
 
     public void ajoutPatient() throws ClassNotFoundException, SQLException {
-        String nom = (((VueAjoutPatient) vue).getjTextFieldNom().getText());
-        String prenom = (((VueAjoutPatient) vue).getjTextFieldPrenom().getText());
-        String sexe = (((VueAjoutPatient) vue).getjComboBoxSexe().getSelectedItem().toString());
-        String dateNaissance
-                = (((VueAjoutPatient) vue).getjTextFieldDateAnnee().getText()) + "-"
-                + (((VueAjoutPatient) vue).getjTextFieldDateMois().getText()) + "-"
-                + (((VueAjoutPatient) vue).getjTextFieldDateJour().getText());
-        String securiteSociale = (((VueAjoutPatient) vue).getjTextFieldSecuriteSociale().getText());
-        
-        
-        
-        String ddYear = (((VueAjoutPatient) vue).getjTextFieldDateAnnee().getText());
-	LocalDateTime now = LocalDateTime.now();
-        String ccYear = Integer.toString(now.getYear());
-        
-        int age;
-        age = Integer.parseInt(ccYear)-Integer.parseInt(ddYear);
-        
+        if (verifier()) {
+            String nom = (((VueAjoutPatient) vue).getjTextFieldNom().getText());
+            String prenom = (((VueAjoutPatient) vue).getjTextFieldPrenom().getText());
+            String sexe = (((VueAjoutPatient) vue).getjComboBoxSexe().getSelectedItem().toString());
+            String dateNaissance
+                    = (((VueAjoutPatient) vue).getjTextFieldDateAnnee().getText()) + "-"
+                    + (((VueAjoutPatient) vue).getjTextFieldDateMois().getText()) + "-"
+                    + (((VueAjoutPatient) vue).getjTextFieldDateJour().getText());
+            String securiteSociale = (((VueAjoutPatient) vue).getjTextFieldSecuriteSociale().getText());
 
-        PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale, age);
-        this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_AJOUTPATIENT);
+            String ddYear = (((VueAjoutPatient) vue).getjTextFieldDateAnnee().getText());
+            LocalDateTime now = LocalDateTime.now();
+            String ccYear = Integer.toString(now.getYear());
+
+            int age;
+            age = Integer.parseInt(ccYear) - Integer.parseInt(ddYear);
+
+            PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale, age);
+            this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_AJOUTPATIENT);
+        }
+    }
+
+    public boolean verifier() {
+        boolean verif = true;
+        boolean verifField[] = new boolean[6];
+        if (!controleur.StringMatcher.isWord(
+                ((VueAjoutPatient) vue).getjTextFieldNom().toString())) {
+            verifField[0] = false;
+            ((VueAjoutPatient) vue).getjLabelErrorNom().setText("Nom incorrecte");
+        }
+        if (!controleur.StringMatcher.isWord(
+                ((VueAjoutPatient) vue).getjTextFieldPrenom().toString())) {
+            verifField[1] = false;
+            ((VueAjoutPatient) vue).getjLabelErrorPrenom().setText("Prenom incorrecte");
+        }
+        if (!controleur.StringMatcher.isDay(
+                ((VueAjoutPatient) vue).getjTextFieldDateJour().toString())) {
+            verifField[2] = false;
+            ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("Date de naissance incorrecte,vérifier format : 00-00-0000 ou véracité de la date");
+        }
+        if (!controleur.StringMatcher.isMonth(
+                ((VueAjoutPatient) vue).getjTextFieldDateMois().toString())) {
+            verifField[3] = false;
+            ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("Date de naissance incorrecte,vérifier format : 00-00-0000 ou véracité de la date");
+        }
+        if (!controleur.StringMatcher.isYear(
+                ((VueAjoutPatient) vue).getjTextFieldDateAnnee().toString())) {
+            verifField[4] = false;
+            ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("Date de naissance incorrecte,vérifier format : 00-00-0000 ou véracité de la date");
+        }
+        if (!controleur.StringMatcher.isCodeSecu(
+                ((VueAjoutPatient) vue).getjTextFieldSecuriteSociale().toString())) {
+            verifField[5] = false;
+            ((VueAjoutPatient) vue).getjLabelErrorCodeSecuriteSociale().setText("Code de sécurité sociale invalide");
+        }
+
+        for (int i = 0; i < verifField.length - 1; i++) {
+            if (verifField[i] == false) {
+                verif = false;
+            }
+        }
+
+        return verif;
     }
 
     public void quitterVueAjoutPatient() throws SQLException, ClassNotFoundException {

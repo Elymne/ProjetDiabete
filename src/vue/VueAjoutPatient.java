@@ -1,6 +1,7 @@
 package vue;
 
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class VueAjoutPatient extends VueGenerique {
@@ -92,13 +93,13 @@ public class VueAjoutPatient extends VueGenerique {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Code Sécurité Sociale");
 
-        jLabelErrorNom.setText("Le prénom n'est pas valide");
+        jLabelErrorNom.setForeground(new java.awt.Color(204, 0, 0));
 
-        jLabelErrorPrenom.setText("Le prénom n'est pas valide");
+        jLabelErrorPrenom.setForeground(new java.awt.Color(204, 0, 0));
 
-        jLabelErrorDateNaissance.setText("La date de naissance n'est pas valide");
+        jLabelErrorDateNaissance.setForeground(new java.awt.Color(204, 0, 0));
 
-        jLabelErrorCodeSecuriteSociale.setText("Le code de sécurité sociale n'est pas valide");
+        jLabelErrorCodeSecuriteSociale.setForeground(new java.awt.Color(204, 0, 0));
 
         javax.swing.GroupLayout jPanelInformationLayout = new javax.swing.GroupLayout(jPanelInformation);
         jPanelInformation.setLayout(jPanelInformationLayout);
@@ -222,7 +223,7 @@ public class VueAjoutPatient extends VueGenerique {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonAnnuler))
                     .addComponent(jPanelInformation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -233,7 +234,7 @@ public class VueAjoutPatient extends VueGenerique {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -334,10 +335,22 @@ public class VueAjoutPatient extends VueGenerique {
     public JTextField getjTextFieldSecuriteSociale() {
         return jTextFieldSecuriteSociale;
     }
-    
-    
-    
-    
+
+    public JLabel getjLabelErrorCodeSecuriteSociale() {
+        return jLabelErrorCodeSecuriteSociale;
+    }
+
+    public JLabel getjLabelErrorDateNaissance() {
+        return jLabelErrorDateNaissance;
+    }
+
+    public JLabel getjLabelErrorNom() {
+        return jLabelErrorNom;
+    }
+
+    public JLabel getjLabelErrorPrenom() {
+        return jLabelErrorPrenom;
+    }
 
 }
 
