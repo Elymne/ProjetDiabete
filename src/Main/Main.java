@@ -10,7 +10,7 @@ public class Main {
         
         ControleurPrincipal controleurPrincipal;
         controleurPrincipal = new ControleurPrincipal();
-        controleurPrincipal.ActiverControleur();
+        controleurPrincipal.action();
     }
 
 }

@@ -2,7 +2,7 @@ package Main;
 import controleur.StringMatcher;
 public class MainTester {
     
-    final static String nomvrai = "HA";
+    final static String nomvrai = "Djurdjevic";
     final static String nomfaux = "HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa";
     
     final static String jourvrai = "1";

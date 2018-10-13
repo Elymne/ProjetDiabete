@@ -30,23 +30,23 @@ public class ControleurMenu extends ControleurGenerique implements ActionListene
     public void quitterApplication() throws SQLException, ClassNotFoundException {
         int a = JOptionPane.showConfirmDialog(getVue(), "Quitter l'application\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
-            this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_APPLICATION);
+            this.getControleurPrincipal().action(EnumAction.QUITTER_APPLICATION);
         }
     }
 
     public void accesEvaluation() throws SQLException, ClassNotFoundException {
-        this.getControleurPrincipal().ActiverControleur(EnumAction.EVALUATION);
+        this.getControleurPrincipal().action(EnumAction.EVALUATION);
     }
     public void accesListeDiagnostique() throws SQLException, ClassNotFoundException {
-        this.getControleurPrincipal().ActiverControleur(EnumAction.LISTEDIAGNOSTIQUE);
+        this.getControleurPrincipal().action(EnumAction.LISTEDIAGNOSTIQUE);
     }
 
     public void accesStatistique() throws SQLException, ClassNotFoundException {
-        this.getControleurPrincipal().ActiverControleur(EnumAction.STATISTIQUE);
+        this.getControleurPrincipal().action(EnumAction.STATISTIQUE);
     }
 
     public void accesAjoutPatient() throws SQLException, ClassNotFoundException {
-        this.getControleurPrincipal().ActiverControleur(EnumAction.AJOUTPATIENT);
+        this.getControleurPrincipal().action(EnumAction.AJOUTPATIENT);
     }
 
     @Override

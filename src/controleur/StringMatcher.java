@@ -26,4 +26,12 @@ public class StringMatcher {
         return s.matches("\\d{13}+");
     }
     
+    public static boolean isTourdeTailleValid(String s){
+        return s.matches("\\d{3}");
+    }
+    
+    public static boolean isIMCValid(String s){
+        return s.matches("\\d{2}");
+    }
+    
 }

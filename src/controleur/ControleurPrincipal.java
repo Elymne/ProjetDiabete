@@ -11,7 +11,7 @@ public class ControleurPrincipal {
     private ControleurAjoutPatient controleurAjoutPatient = null;
     private ControleurListeDiagnostique controleurListeDiagnostique = null;
     
-    public void ActiverControleur(){
+    public void action(){
         if(controleurMenu==null){
             controleurMenu=new ControleurMenu(this);
         }
@@ -19,7 +19,7 @@ public class ControleurPrincipal {
         controleurMenu.getVue().setEnabled(true);
     }
     
-    public void ActiverControleur(EnumAction action) throws SQLException, ClassNotFoundException{
+    public void action(EnumAction action) throws SQLException, ClassNotFoundException{
         switch(action){
             case QUITTER_APPLICATION:
                 menuQuitter();

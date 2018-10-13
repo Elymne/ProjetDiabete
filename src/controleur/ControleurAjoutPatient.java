@@ -3,7 +3,6 @@ package controleur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import static java.awt.event.KeyEvent.VK_ENTER;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -20,11 +19,18 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
     public ControleurAjoutPatient(ControleurPrincipal controleurPrincipal) {
         super(controleurPrincipal);
         vue = new VueAjoutPatient();
+        ((VueAjoutPatient) vue).getjTextFieldNom().addKeyListener(this);
+        ((VueAjoutPatient) vue).getjTextFieldPrenom().addKeyListener(this);
+        ((VueAjoutPatient) vue).getjTextFieldDateAnnee().addKeyListener(this);
+        ((VueAjoutPatient) vue).getjTextFieldDateMois().addKeyListener(this);
+        ((VueAjoutPatient) vue).getjTextFieldDateJour().addKeyListener(this);
+        ((VueAjoutPatient) vue).getjTextFieldSecuriteSociale().addKeyListener(this);
+        ((VueAjoutPatient) vue).getjComboBoxSexe().addKeyListener(this);
+        getVue().getjButtonAnnuler().addActionListener(this);
+        getVue().getjButtonValider().addActionListener(this);
         vue.setFocusable(true);
         vue.addWindowListener(this);
         vue.addKeyListener(this);
-        getVue().getjButtonAnnuler().addActionListener(this);
-        getVue().getjButtonValider().addActionListener(this);
     }
 
     @Override
@@ -34,60 +40,77 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
 
     public void ajoutPatient() throws ClassNotFoundException, SQLException {
         if (verifier()) {
-            String nom = (((VueAjoutPatient) vue).getjTextFieldNom().getText());
-            String prenom = (((VueAjoutPatient) vue).getjTextFieldPrenom().getText());
-            String sexe = (((VueAjoutPatient) vue).getjComboBoxSexe().getSelectedItem().toString());
-            String dateNaissance
-                    = (((VueAjoutPatient) vue).getjTextFieldDateAnnee().getText()) + "-"
-                    + (((VueAjoutPatient) vue).getjTextFieldDateMois().getText()) + "-"
-                    + (((VueAjoutPatient) vue).getjTextFieldDateJour().getText());
-            String securiteSociale = (((VueAjoutPatient) vue).getjTextFieldSecuriteSociale().getText());
+            if (JOptionPane.showConfirmDialog(null, "Vous êtes sûr ?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                String nom = ((VueAjoutPatient) vue).getjTextFieldNom().getText();
+                String prenom = ((VueAjoutPatient) vue).getjTextFieldPrenom().getText();
+                String sexe = ((VueAjoutPatient) vue).getjComboBoxSexe().getSelectedItem().toString();
+                String dateNaissance
+                        = ((VueAjoutPatient) vue).getjTextFieldDateAnnee().getText() + "-"
+                        + ((VueAjoutPatient) vue).getjTextFieldDateMois().getText() + "-"
+                        + ((VueAjoutPatient) vue).getjTextFieldDateJour().getText();
+                String securiteSociale = ((VueAjoutPatient) vue).getjTextFieldSecuriteSociale().getText();
 
-            String ddYear = (((VueAjoutPatient) vue).getjTextFieldDateAnnee().getText());
-            LocalDateTime now = LocalDateTime.now();
-            String ccYear = Integer.toString(now.getYear());
+                String ddYear = ((VueAjoutPatient) vue).getjTextFieldDateAnnee().getText();
+                LocalDateTime now = LocalDateTime.now();
+                String ccYear = Integer.toString(now.getYear());
 
-            int age;
-            age = Integer.parseInt(ccYear) - Integer.parseInt(ddYear);
+                int age;
+                age = Integer.parseInt(ccYear) - Integer.parseInt(ddYear);
 
-            PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale, age);
-            vue.setFocusable(false);
-            this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_AJOUTPATIENT);
+                PersonneDao.insert(nom, prenom, sexe, dateNaissance, securiteSociale, age);
+                vue.setFocusable(false);
+                this.getControleurPrincipal().action(EnumAction.QUITTER_AJOUTPATIENT);
+            }
         }
     }
 
     public boolean verifier() {
+
+        String nom = ((VueAjoutPatient) vue).getjTextFieldNom().getText();
+        String prenom = ((VueAjoutPatient) vue).getjTextFieldPrenom().getText();
+        String day = ((VueAjoutPatient) vue).getjTextFieldDateJour().getText();
+        String month = ((VueAjoutPatient) vue).getjTextFieldDateMois().getText();
+        String year = ((VueAjoutPatient) vue).getjTextFieldDateAnnee().getText();
+        String codeSecu = ((VueAjoutPatient) vue).getjTextFieldSecuriteSociale().getText();
+
         boolean verif = true;
+
         boolean verifField[] = new boolean[6];
-        if (!controleur.StringMatcher.isWord(
-                ((VueAjoutPatient) vue).getjTextFieldNom().toString())) {
+        if (!controleur.StringMatcher.isWord(nom)) {
             verifField[0] = false;
             ((VueAjoutPatient) vue).getjLabelErrorNom().setText("Nom incorrecte");
+        } else {
+            ((VueAjoutPatient) vue).getjLabelErrorNom().setText("");
         }
-        if (!controleur.StringMatcher.isWord(
-                ((VueAjoutPatient) vue).getjTextFieldPrenom().toString())) {
+        if (!controleur.StringMatcher.isWord(prenom)) {
             verifField[1] = false;
             ((VueAjoutPatient) vue).getjLabelErrorPrenom().setText("Prenom incorrecte");
+        } else {
+            ((VueAjoutPatient) vue).getjLabelErrorPrenom().setText("");
         }
-        if (!controleur.StringMatcher.isDay(
-                ((VueAjoutPatient) vue).getjTextFieldDateJour().toString())) {
+        if (!controleur.StringMatcher.isDay(day)) {
             verifField[2] = false;
             ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("Date de naissance incorrecte,vérifier format : 00-00-0000 ou véracité de la date");
+        } else {
+            ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("");
         }
-        if (!controleur.StringMatcher.isMonth(
-                ((VueAjoutPatient) vue).getjTextFieldDateMois().toString())) {
+        if (!controleur.StringMatcher.isMonth(month)) {
             verifField[3] = false;
             ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("Date de naissance incorrecte,vérifier format : 00-00-0000 ou véracité de la date");
+        } else {
+            ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("");
         }
-        if (!controleur.StringMatcher.isYear(
-                ((VueAjoutPatient) vue).getjTextFieldDateAnnee().toString())) {
+        if (!controleur.StringMatcher.isYear(year)) {
             verifField[4] = false;
             ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("Date de naissance incorrecte,vérifier format : 00-00-0000 ou véracité de la date");
+        } else {
+            ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("");
         }
-        if (!controleur.StringMatcher.isCodeSecu(
-                ((VueAjoutPatient) vue).getjTextFieldSecuriteSociale().toString())) {
+        if (!controleur.StringMatcher.isCodeSecu(codeSecu)) {
             verifField[5] = false;
             ((VueAjoutPatient) vue).getjLabelErrorCodeSecuriteSociale().setText("Code de sécurité sociale invalide");
+        } else {
+            ((VueAjoutPatient) vue).getjLabelErrorCodeSecuriteSociale().setText("");
         }
 
         for (int i = 0; i < verifField.length - 1; i++) {
@@ -95,15 +118,15 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
                 verif = false;
             }
         }
-
         return verif;
+
     }
 
     public void quitterVueAjoutPatient() throws SQLException, ClassNotFoundException {
         int a = JOptionPane.showConfirmDialog(getVue(), "Annulation de l'ajout d'un patient\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
             vue.setFocusable(false);
-            this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_AJOUTPATIENT);
+            this.getControleurPrincipal().action(EnumAction.QUITTER_AJOUTPATIENT);
         }
     }
 
@@ -119,15 +142,28 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
             }
         } else {
             if (e.getSource().equals(getVue().getjButtonValider())) {
-                if (JOptionPane.showConfirmDialog(null, "Vous êtes sûr ?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                    try {
-                        ajoutPatient();
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+
+                try {
+                    ajoutPatient();
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
                 }
+
+            }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                ajoutPatient();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -141,23 +177,6 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ControleurAjoutPatient.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        System.out.println(e.getKeyCode() + "KEYTYPED");
-        
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            System.out.println("CONNARD QUAND CA MARCHE");
-        }
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
     }
 
     @Override
@@ -190,4 +209,12 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
 
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
 }

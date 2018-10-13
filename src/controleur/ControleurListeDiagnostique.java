@@ -199,7 +199,7 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
     public void quitterListeEvaluation() throws SQLException, ClassNotFoundException {
         int a = JOptionPane.showConfirmDialog(getVue(), "Quitter la page des diagnostiques\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
-            this.getControleurPrincipal().ActiverControleur(EnumAction.QUITTER_LISTEDIAGNOSTIQUE);
+            this.getControleurPrincipal().action(EnumAction.QUITTER_LISTEDIAGNOSTIQUE);
         }
     }
 
