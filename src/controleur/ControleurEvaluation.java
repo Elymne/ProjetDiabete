@@ -115,31 +115,33 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
 
         String tdt = ((VueEvaluation) vue).getjTextFieldTourTaille().getText();
         String imc = ((VueEvaluation) vue).getjTextFieldIMC().getText();
-        Object prenom = ((VueEvaluation) vue).getjComboBoxPrenomPatient().getSelectedItem();
 
         boolean verif = true;
-
         boolean verifField[] = new boolean[3];
+
         if (!controleur.StringMatcher.isTourdeTailleValid(tdt)) {
             verifField[0] = false;
             ((VueEvaluation) vue).getjLabelErrorTDC().setText("Tour de taille incorrecte");
         } else {
             ((VueEvaluation) vue).getjLabelErrorTDC().setText("");
+            verifField[0] = true;
         }
         if (!controleur.StringMatcher.isIMCValid(imc)) {
             verifField[1] = false;
             ((VueEvaluation) vue).getjLabelErrorIMC().setText("IMC incorrecte");
         } else {
             ((VueEvaluation) vue).getjLabelErrorIMC().setText("");
+            verifField[1] = true;
         }
-        if (prenom == null) {
+        if (((VueEvaluation) vue).getjComboBoxPrenomPatient().getSelectedItem() == null) {
             verifField[2] = false;
             ((VueEvaluation) vue).getjLabelErrorPrenom().setText("Le prénom n'a pas été selectionné");
         } else {
             ((VueEvaluation) vue).getjLabelErrorTDC().setText("");
+            verifField[2] = true;
         }
 
-        for (int i = 0; i < verifField.length - 1; i++) {
+        for (int i = 0; i < verifField.length; i++) {
             if (verifField[i] == false) {
                 verif = false;
             }

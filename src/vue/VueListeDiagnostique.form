@@ -55,10 +55,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPaneId" min="-2" pref="129" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="jButtonModifier" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButtonSupprimer" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="680" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="838" max="-2" attributes="0"/>
                                   <Component id="jButtonRetour" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -95,7 +93,6 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButtonModifier" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonSupprimer" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonRetour" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -574,11 +571,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButtonModifier">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Modifier diagnostique"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="jButtonSupprimer">
           <Properties>
             <Property name="text" type="java.lang.String" value="Supprimer diagnostique"/>

@@ -61,6 +61,8 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
                 vue.setFocusable(false);
                 this.getControleurPrincipal().action(EnumAction.QUITTER_AJOUTPATIENT);
             }
+        }else{
+            System.err.println(" -    - -  -- - - -ca ne marche pas mais pourquoi ? Humm");
         }
     }
 
@@ -74,46 +76,53 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
         String codeSecu = ((VueAjoutPatient) vue).getjTextFieldSecuriteSociale().getText();
 
         boolean verif = true;
-
         boolean verifField[] = new boolean[6];
+        
         if (!controleur.StringMatcher.isWord(nom)) {
             verifField[0] = false;
             ((VueAjoutPatient) vue).getjLabelErrorNom().setText("Nom incorrecte");
         } else {
             ((VueAjoutPatient) vue).getjLabelErrorNom().setText("");
+            verifField[0] = true;
         }
         if (!controleur.StringMatcher.isWord(prenom)) {
             verifField[1] = false;
             ((VueAjoutPatient) vue).getjLabelErrorPrenom().setText("Prenom incorrecte");
         } else {
             ((VueAjoutPatient) vue).getjLabelErrorPrenom().setText("");
+            verifField[1] = true;
         }
         if (!controleur.StringMatcher.isDay(day)) {
             verifField[2] = false;
             ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("Date de naissance incorrecte,vérifier format : 00-00-0000 ou véracité de la date");
         } else {
             ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("");
+            verifField[2] = true;
         }
         if (!controleur.StringMatcher.isMonth(month)) {
             verifField[3] = false;
             ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("Date de naissance incorrecte,vérifier format : 00-00-0000 ou véracité de la date");
         } else {
             ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("");
+            verifField[3] = true;
         }
         if (!controleur.StringMatcher.isYear(year)) {
             verifField[4] = false;
             ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("Date de naissance incorrecte,vérifier format : 00-00-0000 ou véracité de la date");
         } else {
             ((VueAjoutPatient) vue).getjLabelErrorDateNaissance().setText("");
+            verifField[4] = true;
         }
         if (!controleur.StringMatcher.isCodeSecu(codeSecu)) {
             verifField[5] = false;
             ((VueAjoutPatient) vue).getjLabelErrorCodeSecuriteSociale().setText("Code de sécurité sociale invalide");
         } else {
             ((VueAjoutPatient) vue).getjLabelErrorCodeSecuriteSociale().setText("");
+            verifField[5] = true;
         }
 
-        for (int i = 0; i < verifField.length - 1; i++) {
+        for (int i = 0; i < verifField.length; i++) {
+            System.err.println("Contenu de la donnée : " + i + " : " + verifField[i]);
             if (verifField[i] == false) {
                 verif = false;
             }

@@ -1,6 +1,5 @@
 package vue;
 
-
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -9,7 +8,7 @@ public class VueListeDiagnostique extends VueGenerique {
 
     private DefaultTableModel modeleTableListeinformation;
     private DefaultTableModel modeleTableId;
-    
+
     /**
      * Creates new form VueListeDiagnostique
      */
@@ -18,14 +17,13 @@ public class VueListeDiagnostique extends VueGenerique {
         initComponents();
         modeleTableListeinformation = new DefaultTableModel();
         jTableListeInformation.setModel(modeleTableListeinformation);
-        
+
         modeleTableId = new DefaultTableModel();
         jTableId.setModel(modeleTableId);
-        
-;
-        
+        ;
+
     }
-    
+
     public DefaultTableModel getModeleTableListeInformation() {
         return modeleTableListeinformation;
     }
@@ -33,7 +31,7 @@ public class VueListeDiagnostique extends VueGenerique {
     public JTable getjTableListeInformation() {
         return jTableListeInformation;
     }
-    
+
     public DefaultTableModel getModeleTableId() {
         return modeleTableId;
     }
@@ -41,7 +39,7 @@ public class VueListeDiagnostique extends VueGenerique {
     public JTable getjTableId() {
         return jTableId;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,7 +95,6 @@ public class VueListeDiagnostique extends VueGenerique {
         jTextFieldAgeScore = new javax.swing.JTextField();
         jScrollPaneListeInformation = new javax.swing.JScrollPane();
         jTableListeInformation = new javax.swing.JTable();
-        jButtonModifier = new javax.swing.JButton();
         jButtonSupprimer = new javax.swing.JButton();
         jButtonRetour = new javax.swing.JButton();
         jScrollPaneId = new javax.swing.JScrollPane();
@@ -381,8 +378,6 @@ public class VueListeDiagnostique extends VueGenerique {
         });
         jScrollPaneListeInformation.setViewportView(jTableListeInformation);
 
-        jButtonModifier.setText("Modifier diagnostique");
-
         jButtonSupprimer.setText("Supprimer diagnostique");
 
         jButtonRetour.setText("Retour");
@@ -413,10 +408,8 @@ public class VueListeDiagnostique extends VueGenerique {
                         .addGroup(jPanelListePersonnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPaneId, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelListePersonnesLayout.createSequentialGroup()
-                                .addComponent(jButtonModifier)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonSupprimer)
-                                .addGap(680, 680, 680)
+                                .addGap(838, 838, 838)
                                 .addComponent(jButtonRetour)))))
                 .addGap(0, 188, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelListePersonnesLayout.createSequentialGroup()
@@ -443,7 +436,6 @@ public class VueListeDiagnostique extends VueGenerique {
                     .addComponent(jScrollPaneId))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelListePersonnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModifier)
                     .addComponent(jButtonSupprimer)
                     .addComponent(jButtonRetour))
                 .addGap(12, 12, 12))
@@ -525,7 +517,6 @@ public class VueListeDiagnostique extends VueGenerique {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonModifier;
     private javax.swing.JButton jButtonRetour;
     private javax.swing.JButton jButtonSupprimer;
     private javax.swing.JLabel jLabel1;
@@ -577,12 +568,6 @@ public class VueListeDiagnostique extends VueGenerique {
     private javax.swing.JTextField jTextFieldTraitement;
     private javax.swing.JTextField jTextFieldTraitementScore;
     // End of variables declaration//GEN-END:variables
-
-    
-    
-    public javax.swing.JButton getjButtonModifier() {
-        return jButtonModifier;
-    }
 
     public javax.swing.JButton getjButtonRetour() {
         return jButtonRetour;

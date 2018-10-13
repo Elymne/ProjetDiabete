@@ -90,13 +90,10 @@ public class VueEvaluation extends VueGenerique {
         jLabel14.setText("ATCD glycémie supérieur à la normale");
 
         jLabelErrorTDC.setForeground(new java.awt.Color(204, 0, 0));
-        jLabelErrorTDC.setText("d");
 
         jLabelErrorIMC.setForeground(new java.awt.Color(204, 0, 0));
-        jLabelErrorIMC.setText("d");
 
         jLabelErrorPrenom.setForeground(new java.awt.Color(204, 0, 0));
-        jLabelErrorPrenom.setText("d");
 
         javax.swing.GroupLayout jPanelInformationLayout = new javax.swing.GroupLayout(jPanelInformation);
         jPanelInformation.setLayout(jPanelInformationLayout);

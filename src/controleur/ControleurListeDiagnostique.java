@@ -25,10 +25,17 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
     public ControleurListeDiagnostique(ControleurPrincipal controleurPrincipal) throws SQLException, ClassNotFoundException {
         super(controleurPrincipal);
         vue = new VueListeDiagnostique();
+        vue.addWindowListener(this);
         afficherListeInformation();
         afficherListeId();
         ((VueListeDiagnostique) vue).getjButtonRetour().addActionListener(this);
+        ((VueListeDiagnostique) vue).getjButtonSupprimer().addActionListener(this);
         ((VueListeDiagnostique) vue).getjTableId().addMouseListener(this);
+    }
+
+    @Override
+    public VueListeDiagnostique getVue() {
+        return (VueListeDiagnostique) vue;
     }
 
     public void afficherListeInformation() {
@@ -49,9 +56,11 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         }
     }
 
+    
+
     public void afficherListeId() throws SQLException, ClassNotFoundException {
         ((VueListeDiagnostique) vue).getModeleTableId().setRowCount(0);
-        String[] titresColonnesId = {"Identifiant"};
+        String[] titresColonnesId = {"Id Evaluation"};
         ((VueListeDiagnostique) vue).getModeleTableId().setColumnIdentifiers(titresColonnesId);
         try {
             String[] ligneDonnees = new String[1];
@@ -80,6 +89,19 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         }
     }
 
+    public void supprimerDiagnostique() throws ClassNotFoundException, SQLException, ParseException {
+        int ligne = ((VueListeDiagnostique) vue).getjTableId().getSelectedRow();
+        int colonne = ((VueListeDiagnostique) vue).getjTableId().getSelectedColumn();
+        if (ligne != -1 && colonne != -1) {
+            if (JOptionPane.showConfirmDialog(null, "Vous êtes sûr de supprimer cette evaluation ?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                String id = (String) ((VueListeDiagnostique) vue).getModeleTableId().getValueAt(ligne, colonne);
+                EvaluationDao.delete(Integer.parseInt(id));
+                this.getControleurPrincipal().action(EnumAction.QUITTER_LISTEDIAGNOSTIQUE);
+                this.getControleurPrincipal().action(EnumAction.LISTEDIAGNOSTIQUE);
+            }
+        }
+    }
+
     public void remplirJTextFieldPersonne(Evaluation evaluation) {
         String nom = (String) evaluation.getEvaluationPersonne().getNom();
         String prenom = (String) evaluation.getEvaluationPersonne().getPrenom();
@@ -104,7 +126,6 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         Integer alimentation = evaluation.getEvaluationConsoLegume();
         Boolean atcd = evaluation.getEvaluationATCD();
         String age = Integer.toString(evaluation.getEvaluationPersonne().getAge());
-        
 
         ((VueListeDiagnostique) vue).getjTextFieldTaille().setText(taille);
         String evaluationActiviteSportive = "";
@@ -164,19 +185,19 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         Integer ageScore = evaluationScore.getEvaluationAge();
         Integer scoreTotal = tailleScore + sportifScore + traitementScore + familleDiabeteScore + massScore + alimentationScore + atcdScore + ageScore;
         Integer risque = 1;
-        if(scoreTotal < 7){
+        if (scoreTotal < 7) {
             risque = 1;
-        }else{
-            if(scoreTotal > 7 && scoreTotal < 11){
+        } else {
+            if (scoreTotal > 7 && scoreTotal < 11) {
                 risque = 4;
-            }else{
-                if(scoreTotal > 11 && scoreTotal < 14){
+            } else {
+                if (scoreTotal > 11 && scoreTotal < 14) {
                     risque = 17;
-                }else{
-                    if(scoreTotal > 14 && scoreTotal < 20){
+                } else {
+                    if (scoreTotal > 14 && scoreTotal < 20) {
                         risque = 33;
-                    }else{
-                        if(scoreTotal > 20){
+                    } else {
+                        if (scoreTotal > 20) {
                             risque = 50;
                         }
                     }
@@ -196,26 +217,29 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         ((VueListeDiagnostique) vue).getjTextFieldRisque().setText(Integer.toString(risque) + "%");
     }
 
-    public void quitterListeEvaluation() throws SQLException, ClassNotFoundException {
-        int a = JOptionPane.showConfirmDialog(getVue(), "Quitter la page des diagnostiques\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (a == JOptionPane.YES_OPTION) {
-            this.getControleurPrincipal().action(EnumAction.QUITTER_LISTEDIAGNOSTIQUE);
-        }
-    }
-
-    @Override
-    public VueListeDiagnostique getVue() {
-        return (VueListeDiagnostique) vue;
+    public void quitterListeDiagnostique() throws SQLException, ClassNotFoundException {
+        this.getControleurPrincipal().action(EnumAction.QUITTER_LISTEDIAGNOSTIQUE);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(((VueListeDiagnostique) vue).getjButtonRetour())) {
             try {
-                quitterListeEvaluation();
+                quitterListeDiagnostique();
             } catch (SQLException ex) {
                 Logger.getLogger(ControleurListeDiagnostique.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControleurListeDiagnostique.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(e.getSource().equals(((VueListeDiagnostique) vue).getjButtonSupprimer())){
+            try {
+                supprimerDiagnostique();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControleurListeDiagnostique.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControleurListeDiagnostique.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
                 Logger.getLogger(ControleurListeDiagnostique.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -229,7 +253,7 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
     @Override
     public void windowClosing(WindowEvent e) {
         try {
-            quitterListeEvaluation();
+            quitterListeDiagnostique();
         } catch (SQLException ex) {
             Logger.getLogger(ControleurListeDiagnostique.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
