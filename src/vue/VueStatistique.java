@@ -28,7 +28,6 @@ public class VueStatistique extends VueGenerique {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButton5 = new javax.swing.JRadioButton();
         jPanelMain = new javax.swing.JPanel();
         jLabelTitreMain = new javax.swing.JLabel();
         jPanelChoixSexe = new javax.swing.JPanel();
@@ -64,10 +63,11 @@ public class VueStatistique extends VueGenerique {
         jPanelStatistiqueLegume = new javax.swing.JPanel();
         jPanelStatistiqueGlycemie = new javax.swing.JPanel();
 
-        jRadioButton5.setText("jRadioButton5");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 51, 51));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(204, 204, 204));
+        jPanelMain.setBackground(new java.awt.Color(51, 51, 51));
+        jPanelMain.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabelTitreMain.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabelTitreMain.setForeground(new java.awt.Color(255, 255, 255));
@@ -195,7 +195,7 @@ public class VueStatistique extends VueGenerique {
                     .addComponent(jCheckBoxActiviteSportive)
                     .addComponent(jCheckBoxGlycemie)
                     .addComponent(jCheckBoxLegume))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(jPanelChoixDescriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCheckBoxTourTaille)
                     .addComponent(jCheckBoxIMC))
@@ -261,15 +261,17 @@ public class VueStatistique extends VueGenerique {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelChoixDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanelChoixSexe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanelChoixAge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanelChoixSexe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelChoixAge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonValider)
                     .addComponent(jButtonRetour))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanelStatistique.setBackground(new java.awt.Color(51, 51, 51));
+        jPanelStatistique.setForeground(new java.awt.Color(51, 51, 51));
 
         jPanelStatistiquePrincipale.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -342,7 +344,7 @@ public class VueStatistique extends VueGenerique {
         jPanelStatistiqueIMC.setLayout(jPanelStatistiqueIMCLayout);
         jPanelStatistiqueIMCLayout.setHorizontalGroup(
             jPanelStatistiqueIMCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
         jPanelStatistiqueIMCLayout.setVerticalGroup(
             jPanelStatistiqueIMCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,7 +358,7 @@ public class VueStatistique extends VueGenerique {
         jPanelStatistiqueLegume.setLayout(jPanelStatistiqueLegumeLayout);
         jPanelStatistiqueLegumeLayout.setHorizontalGroup(
             jPanelStatistiqueLegumeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanelStatistiqueLegumeLayout.setVerticalGroup(
             jPanelStatistiqueLegumeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,13 +390,13 @@ public class VueStatistique extends VueGenerique {
                         .addComponent(jPanelStatistiquePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanelStatistiqueTourTaille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanelStatistiqueGlycemie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelStatistiqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelStatistiqueLegume, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelStatistiqueActiviteSportive, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelFamilleDiabete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelStatistiqueIMC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelStatistiqueIMC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanelStatistiqueLayout.setVerticalGroup(
             jPanelStatistiqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,9 +427,7 @@ public class VueStatistique extends VueGenerique {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanelStatistique, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanelStatistique, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -495,7 +495,6 @@ public class VueStatistique extends VueGenerique {
     private javax.swing.JLabel jLabelTitreMain;
     private javax.swing.JLabel jLabelTitreSexe;
     private javax.swing.JLabel jLabeltitreAge;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanelChoixAge;
     private javax.swing.JPanel jPanelChoixDescription;
     private javax.swing.JPanel jPanelChoixSexe;
@@ -509,7 +508,6 @@ public class VueStatistique extends VueGenerique {
     private javax.swing.JPanel jPanelStatistiquePrincipale;
     private javax.swing.JPanel jPanelStatistiqueTourTaille;
     private javax.swing.JPanel jPanelStatistiqueTraitement;
-    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButtonAgeTous;
     private javax.swing.JRadioButton jRadioButtonAgeUn;
     private javax.swing.JRadioButton jRadioButtonDeux;

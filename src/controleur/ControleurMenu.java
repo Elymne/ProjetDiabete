@@ -84,6 +84,15 @@ public class ControleurMenu extends ControleurGenerique implements ActionListene
                 Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        if (e.getSource().equals(getVue().getjButtonStatistique())){
+            try {
+                accesStatistique();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     @Override

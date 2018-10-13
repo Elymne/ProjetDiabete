@@ -14,6 +14,7 @@ public class ControleurPrincipal {
     private ControleurEvaluation controleurEvaluation = null;
     private ControleurAjoutPatient controleurAjoutPatient = null;
     private ControleurListeDiagnostique controleurListeDiagnostique = null;
+    private ControleurStatistique controleurStatistique = null;
     
     public void action(){
         if(controleurMenu==null){
@@ -47,10 +48,10 @@ public class ControleurPrincipal {
                 quitterVueListeDiagnostique();
                 break;
             case STATISTIQUE:
-                System.out.println("Non");
+                accesVueStatistique();
                 break;
             case QUITTER_STATISTIQUE:
-                System.out.println("Non");
+                quitterVueStatistique();
                 break;
         }
     }
@@ -104,6 +105,23 @@ public class ControleurPrincipal {
         controleurMenu.getVue().setEnabled(true);
         controleurListeDiagnostique.getVue().setVisible(false);
         controleurListeDiagnostique = null;
+    }
+    
+    private void accesVueStatistique() throws SQLException, ClassNotFoundException {
+        if (controleurStatistique == null) {
+            controleurStatistique = new ControleurStatistique(this);
+        }
+        controleurMenu.getVue().setEnabled(false);
+        controleurStatistique.getVue().setVisible(true);
+    }
+    
+    private void quitterVueStatistique(){
+        if (controleurMenu == null) {
+            controleurMenu = new ControleurMenu(this);
+        }
+        controleurMenu.getVue().setEnabled(true);
+        controleurStatistique.getVue().setVisible(false);
+        controleurStatistique = null;
     }
     
     private void menuQuitter() {
