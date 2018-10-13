@@ -1,5 +1,9 @@
 package controleur;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class StringMatcher {
     
     public static boolean isWord(String s){

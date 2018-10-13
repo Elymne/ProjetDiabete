@@ -6,6 +6,10 @@ import java.util.List;
 import modele.dao.PersonneDao;
 import modele.metier.Personne;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class PersonneDaoTest {
 
     public static void main(String[] args) {

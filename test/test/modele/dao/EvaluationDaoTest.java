@@ -9,6 +9,10 @@ import modele.dao.PersonneDao;
 import modele.metier.Evaluation;
 import modele.metier.Personne;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class EvaluationDaoTest {
 
     public static void main(String[] args) throws ParseException {

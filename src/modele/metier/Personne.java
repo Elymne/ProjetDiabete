@@ -1,5 +1,9 @@
 package modele.metier;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class Personne {
 
     private int id;

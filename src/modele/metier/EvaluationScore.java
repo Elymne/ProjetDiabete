@@ -1,5 +1,9 @@
 package modele.metier;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class EvaluationScore {
     
     private Evaluation evaluation;

@@ -4,6 +4,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class VueListeDiagnostique extends VueGenerique {
 
     private DefaultTableModel modeleTableListeinformation;

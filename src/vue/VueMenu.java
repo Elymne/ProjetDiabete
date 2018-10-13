@@ -2,6 +2,10 @@ package vue;
 
 import javax.swing.JButton;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class VueMenu extends VueGenerique {
 
     public VueMenu() {

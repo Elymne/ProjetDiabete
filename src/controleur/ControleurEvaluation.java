@@ -16,6 +16,10 @@ import modele.dao.PersonneDao;
 import modele.metier.Personne;
 import vue.VueEvaluation;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class ControleurEvaluation extends ControleurGenerique implements ActionListener, WindowListener, KeyListener {
 
     Personne personne;

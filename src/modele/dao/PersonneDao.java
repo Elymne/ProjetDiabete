@@ -8,6 +8,10 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import modele.metier.Personne;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class PersonneDao {
 
     public static Personne selectOneById(int id) throws ClassNotFoundException, SQLException {

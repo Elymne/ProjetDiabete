@@ -4,6 +4,10 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class VueAjoutPatient extends VueGenerique {
 
     public VueAjoutPatient() {

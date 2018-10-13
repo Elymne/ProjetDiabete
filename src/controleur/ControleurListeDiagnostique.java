@@ -17,6 +17,10 @@ import modele.metier.Evaluation;
 import modele.metier.EvaluationScore;
 import vue.VueListeDiagnostique;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class ControleurListeDiagnostique extends ControleurGenerique implements ActionListener, WindowListener, MouseListener {
 
     private ArrayList<Evaluation> lesEvaluations;

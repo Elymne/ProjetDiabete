@@ -3,6 +3,10 @@ package vue;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class VueEvaluation extends VueGenerique {
 
     /**

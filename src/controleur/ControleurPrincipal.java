@@ -4,6 +4,10 @@ import static controleur.EnumAction.*;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class ControleurPrincipal {
     
     private ControleurMenu controleurMenu = null;

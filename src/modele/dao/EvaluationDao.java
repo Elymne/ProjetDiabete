@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import modele.metier.Evaluation;
 import modele.metier.Personne;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class EvaluationDao {
     
     public static Evaluation selectOneById(int id) throws ClassNotFoundException, SQLException, ParseException {

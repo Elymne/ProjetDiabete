@@ -14,6 +14,10 @@ import javax.swing.JOptionPane;
 import modele.dao.PersonneDao;
 import vue.VueAjoutPatient;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class ControleurAjoutPatient extends ControleurGenerique implements ActionListener, WindowListener, KeyListener {
 
     public ControleurAjoutPatient(ControleurPrincipal controleurPrincipal) {

@@ -2,6 +2,10 @@ package modele.metier;
 
 import java.text.ParseException;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public class Evaluation {
 
     private int id;

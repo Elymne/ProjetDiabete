@@ -1,5 +1,9 @@
 package controleur;
 
+/**
+ *
+ * @author Djurdjevic Sacha
+ */
 public enum EnumAction {
     
     QUITTER_APPLICATION,
