@@ -63,15 +63,23 @@ public class VueStatistique extends VueGenerique {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
+        setMaximumSize(new java.awt.Dimension(825, 825));
+        setMinimumSize(new java.awt.Dimension(825, 825));
+        setPreferredSize(new java.awt.Dimension(825, 825));
 
         jPanelMain.setBackground(new java.awt.Color(51, 51, 51));
         jPanelMain.setForeground(new java.awt.Color(51, 51, 51));
+        jPanelMain.setMaximumSize(new java.awt.Dimension(825, 280));
+        jPanelMain.setMinimumSize(new java.awt.Dimension(825, 280));
 
         jLabelTitreMain.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabelTitreMain.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTitreMain.setText("Statistique - Choix Descriptifs");
 
         jPanelChoixSexe.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelChoixSexe.setMaximumSize(new java.awt.Dimension(800, 200));
+        jPanelChoixSexe.setMinimumSize(new java.awt.Dimension(800, 200));
+        jPanelChoixSexe.setPreferredSize(new java.awt.Dimension(800, 200));
 
         jLabelTitreSexe.setForeground(new java.awt.Color(51, 51, 51));
         jLabelTitreSexe.setText("Choix des sexes");
@@ -82,7 +90,7 @@ public class VueStatistique extends VueGenerique {
         jLabelTitreDescription.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTitreDescription.setText("Choix des descriptions");
 
-        jComboBoxAge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moins de 45 ans", "Entre 45 et 54 ans", "Entre 54 et 64 ans", "Plus de 64 ans" }));
+        jComboBoxAge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tous", "Moins de 45 ans", "Entre 45 et 54 ans", "Entre 54 et 64 ans", "Plus de 64 ans" }));
 
         jComboBoxSexe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tous", "Femmes", "Hommes" }));
 
@@ -101,7 +109,7 @@ public class VueStatistique extends VueGenerique {
                     .addComponent(jLabeltitreAge)
                     .addComponent(jLabelTitreDescription)
                     .addComponent(jComboBoxSelectionStat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(497, Short.MAX_VALUE))
         );
         jPanelChoixSexeLayout.setVerticalGroup(
             jPanelChoixSexeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +126,7 @@ public class VueStatistique extends VueGenerique {
                 .addComponent(jLabelTitreDescription)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBoxSelectionStat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jButtonValider.setText("Regarder Statistique");
@@ -130,20 +138,14 @@ public class VueStatistique extends VueGenerique {
         jPanelMainLayout.setHorizontalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMainLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelMainLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jButtonValider)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonRetour)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanelMainLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanelChoixSexe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanelMainLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelTitreMain)
+                        .addComponent(jButtonRetour))
+                    .addComponent(jLabelTitreMain)
+                    .addComponent(jPanelChoixSexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelMainLayout.setVerticalGroup(
@@ -162,8 +164,13 @@ public class VueStatistique extends VueGenerique {
 
         jPanelStatistique.setBackground(new java.awt.Color(51, 51, 51));
         jPanelStatistique.setForeground(new java.awt.Color(51, 51, 51));
+        jPanelStatistique.setMaximumSize(new java.awt.Dimension(810, 540));
+        jPanelStatistique.setMinimumSize(new java.awt.Dimension(810, 540));
+        jPanelStatistique.setPreferredSize(new java.awt.Dimension(810, 540));
 
         jPanelStatistiquePrincipale.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelStatistiquePrincipale.setMaximumSize(new java.awt.Dimension(800, 485));
+        jPanelStatistiquePrincipale.setMinimumSize(new java.awt.Dimension(800, 485));
 
         jLabelStat1.setForeground(new java.awt.Color(0, 0, 0));
         jLabelStat1.setText("jLabel1");
@@ -180,24 +187,39 @@ public class VueStatistique extends VueGenerique {
         jLabelStat5.setForeground(new java.awt.Color(0, 0, 0));
         jLabelStat5.setText("jLabel5");
 
-        jTextFieldStat1.setEnabled(false);
+        jTextFieldStat1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldStat1.setMaximumSize(new java.awt.Dimension(14, 24));
+        jTextFieldStat1.setSelectedTextColor(new java.awt.Color(204, 204, 204));
 
-        jTextFieldStat2.setEnabled(false);
+        jTextFieldStat2.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldStat2.setMaximumSize(new java.awt.Dimension(14, 24));
+        jTextFieldStat2.setSelectedTextColor(new java.awt.Color(204, 204, 204));
 
-        jTextFieldStat4.setEnabled(false);
+        jTextFieldStat4.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldStat4.setMaximumSize(new java.awt.Dimension(14, 24));
+        jTextFieldStat4.setSelectedTextColor(new java.awt.Color(204, 204, 204));
 
-        jTextFieldStat5.setEnabled(false);
+        jTextFieldStat5.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldStat5.setMaximumSize(new java.awt.Dimension(14, 24));
+        jTextFieldStat5.setSelectedTextColor(new java.awt.Color(204, 204, 204));
 
-        jTextFieldStat3.setEnabled(false);
+        jTextFieldStat3.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldStat3.setMaximumSize(new java.awt.Dimension(14, 24));
+        jTextFieldStat3.setSelectedTextColor(new java.awt.Color(204, 204, 204));
 
         jPanelMoyenne.setBackground(new java.awt.Color(204, 204, 204));
+        jPanelMoyenne.setMaximumSize(new java.awt.Dimension(350, 180));
+        jPanelMoyenne.setMinimumSize(new java.awt.Dimension(350, 180));
+        jPanelMoyenne.setPreferredSize(new java.awt.Dimension(350, 180));
 
         jLabelMoyenne.setForeground(new java.awt.Color(0, 0, 0));
         jLabelMoyenne.setText("Moyenne");
 
-        jTextFieldStatMoyenne.setEnabled(false);
+        jTextFieldStatMoyenne.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldStatMoyenne.setSelectedTextColor(new java.awt.Color(204, 204, 204));
 
-        jTextFieldStatNombre.setEnabled(false);
+        jTextFieldStatNombre.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldStatNombre.setSelectedTextColor(new java.awt.Color(204, 204, 204));
 
         jLabelNombre.setForeground(new java.awt.Color(0, 0, 0));
         jLabelNombre.setText("Echantillon Total");
@@ -217,7 +239,7 @@ public class VueStatistique extends VueGenerique {
                         .addComponent(jTextFieldStatNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabelNombre)))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         jPanelMoyenneLayout.setVerticalGroup(
             jPanelMoyenneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,7 +252,7 @@ public class VueStatistique extends VueGenerique {
                 .addGroup(jPanelMoyenneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldStatNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNombre))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelStatistiquePrincipaleLayout = new javax.swing.GroupLayout(jPanelStatistiquePrincipale);
@@ -239,52 +261,50 @@ public class VueStatistique extends VueGenerique {
             jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelStatistiquePrincipaleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextFieldStat5, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                    .addComponent(jTextFieldStat4)
-                    .addComponent(jTextFieldStat3)
-                    .addComponent(jTextFieldStat2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldStat1, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelStatistiquePrincipaleLayout.createSequentialGroup()
+                        .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextFieldStat5, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                            .addComponent(jTextFieldStat4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldStat3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldStat2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldStat1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelStat2)
                             .addComponent(jLabelStat1)
-                            .addComponent(jLabelStat3, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addComponent(jLabelStat4, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jLabelStat5, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
-                .addComponent(jPanelMoyenne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                            .addComponent(jLabelStat2)
+                            .addComponent(jLabelStat3)
+                            .addComponent(jLabelStat4)
+                            .addComponent(jLabelStat5)))
+                    .addComponent(jPanelMoyenne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(444, Short.MAX_VALUE))
         );
         jPanelStatistiquePrincipaleLayout.setVerticalGroup(
             jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelStatistiquePrincipaleLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanelMoyenne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelStatistiquePrincipaleLayout.createSequentialGroup()
-                        .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldStat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelStat1))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelStat2)
-                            .addComponent(jTextFieldStat2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelStat3)
-                            .addComponent(jTextFieldStat3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelStat4)
-                            .addComponent(jTextFieldStat4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelStat5)
-                            .addComponent(jTextFieldStat5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(183, Short.MAX_VALUE))
+                    .addComponent(jTextFieldStat1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelStat1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldStat2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelStat2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldStat3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelStat3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldStat4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelStat4))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelStatistiquePrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldStat5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelStat5))
+                .addGap(41, 41, 41)
+                .addComponent(jPanelMoyenne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabelStatistiqueTitre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -298,9 +318,9 @@ public class VueStatistique extends VueGenerique {
             .addGroup(jPanelStatistiqueLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelStatistiqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelStatistiquePrincipale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelStatistiqueTitre))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelStatistiqueTitre)
+                    .addComponent(jPanelStatistiquePrincipale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanelStatistiqueLayout.setVerticalGroup(
             jPanelStatistiqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,7 +329,7 @@ public class VueStatistique extends VueGenerique {
                 .addComponent(jLabelStatistiqueTitre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelStatistiquePrincipale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -317,14 +337,14 @@ public class VueStatistique extends VueGenerique {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanelStatistique, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelStatistique, javax.swing.GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelStatistique, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelStatistique, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();

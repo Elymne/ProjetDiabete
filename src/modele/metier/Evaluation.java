@@ -83,14 +83,6 @@ public class Evaluation {
         this.evaluationConsoLegume = evluationConsoLegume;
     }
 
-    public boolean getEvaluationATCD() {
-        return evaluationATCDGlycemie;
-    }
-
-    public void setEvaluationATCD(boolean evaluationATCD) {
-        this.evaluationATCDGlycemie = evaluationATCD;
-    }
-
     public Personne getEvaluationPersonne() {
         return evaluationPersonne;
     }

@@ -128,7 +128,7 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         Boolean familleDiabete = evaluation.getEvaluationTraitement();
         String masse = Double.toString(evaluation.getEvaluationMasse());
         Integer alimentation = evaluation.getEvaluationConsoLegume();
-        Boolean atcd = evaluation.getEvaluationATCD();
+        Boolean atcd = evaluation.getEvaluationATCDGlycemie();
         String age = Integer.toString(evaluation.getEvaluationPersonne().getAge());
 
         ((VueListeDiagnostique) vue).getjTextFieldTaille().setText(taille);
