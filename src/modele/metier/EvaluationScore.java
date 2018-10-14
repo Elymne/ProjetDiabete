@@ -7,6 +7,15 @@ package modele.metier;
 public class EvaluationScore {
     
     private Evaluation evaluation;
+    private int scoreTotal = getEvaluationTourDeTaille() 
+            + getEvaluationActiviteSportive() 
+            + getEvaluationTraitement() 
+            + getEvaluationFamillePositive() 
+            + getEvaluationMasse()
+            + getEvaluationConsoLegume()
+            + getEvaluationATCD()
+            + getEvaluationATCDGlycemie()
+            + getEvaluationAge();
 
     public EvaluationScore(Evaluation evaluation) {
         this.evaluation = evaluation;
@@ -14,6 +23,10 @@ public class EvaluationScore {
 
     public Evaluation getEvaluation() {
         return evaluation;
+    }
+    
+    public int getScoreTotal(){
+        return scoreTotal;
     }
     
     public int getEvaluationTourDeTaille() {

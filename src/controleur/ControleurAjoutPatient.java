@@ -65,8 +65,6 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
                 vue.setFocusable(false);
                 this.getControleurPrincipal().action(EnumAction.QUITTER_AJOUTPATIENT);
             }
-        }else{
-            System.err.println(" -    - -  -- - - -ca ne marche pas mais pourquoi ? Humm");
         }
     }
 

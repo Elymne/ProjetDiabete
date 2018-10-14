@@ -192,13 +192,13 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         if (scoreTotal < 7) {
             risque = 1;
         } else {
-            if (scoreTotal > 7 && scoreTotal < 11) {
+            if (scoreTotal > 7 && scoreTotal <= 11) {
                 risque = 4;
             } else {
-                if (scoreTotal > 11 && scoreTotal < 14) {
+                if (scoreTotal > 11 && scoreTotal <= 14) {
                     risque = 17;
                 } else {
-                    if (scoreTotal > 14 && scoreTotal < 20) {
+                    if (scoreTotal > 14 && scoreTotal <= 20) {
                         risque = 33;
                     } else {
                         if (scoreTotal > 20) {

@@ -123,34 +123,7 @@ public class EvaluationDao {
         }
         c.close();
         return listeEvaluations;
-    }
-    
-    public static ArrayList<Evaluation> selectAllByAge(int ageMin, int ageMax) throws SQLException, ClassNotFoundException, ParseException {
-        ArrayList<Evaluation> listeEvaluations = new ArrayList<Evaluation>();
-        Evaluation evaluation = null;
-
-        Class.forName("org.sqlite.JDBC");
-        Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
-        c.setAutoCommit(false);
-        String sql = "SELECT * FROM EVALUATION where CURRENT_DATE - DATENAISSANCE BETWEEN ? AND ?;";
-        try (PreparedStatement pstmt = c.prepareStatement(sql);) {
-            pstmt.setInt(1, ageMin);
-            pstmt.setInt(2, ageMax);
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                evaluation = EvaluationDao.evaluationFromResultSet(rs);
-                listeEvaluations.add(evaluation);
-            }
-            rs.close();
-            pstmt.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        c.close();
-        return listeEvaluations;
-    }
-    
-    
+    }   
     
     public static void insert(double evaluationTourDeTaille, boolean evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCDGlycemie, Personne evaluationPersonne) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");

@@ -22,7 +22,7 @@ public class EvaluationDaoTest {
             System.out.println("Test0 effectué : connexion\n");
             test1_InsertPersonne(1, "Jean", "Bonisseur de Labatte", "m", "1927-01-24", "0547777", 47);
             Personne personne_1 = test1_SelectUniquePersonne(1);
-            test1_InsertPersonne(2, "Sara", "Sve", "m", "1927-05-21", "0577777", 89);
+            test1_InsertPersonne(2, "Sara", "Sve", "m", "1999-05-21", "0577777", 89);
             Personne personne_2 = test1_SelectUniquePersonne(2);
             test1_Insert(1, 10.50, true, true, false, 90.47, 0, false, personne_1);
             test1_Insert(2, 24.36, false, true, true, 90.47, 0, true, personne_2);
@@ -58,9 +58,9 @@ public class EvaluationDaoTest {
     }
 
     public static void test4_SelectMultiple() throws SQLException, ClassNotFoundException, ParseException {
-        List<Evaluation> desEvaluation = EvaluationDao.selectAll();
+        List<Evaluation> desEvaluations = EvaluationDao.selectAll();
         System.out.println("Les évaluations {");
-        for (Evaluation evaluation : desEvaluation) {
+        for (Evaluation evaluation : desEvaluations) {
             System.out.println("Evaluation : " + evaluation.toString());
         }
         System.out.println("}");
