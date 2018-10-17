@@ -41,6 +41,7 @@ public class ControleurMenu extends ControleurGenerique implements ActionListene
     public void accesEvaluation() throws SQLException, ClassNotFoundException {
         this.getControleurPrincipal().action(EnumAction.EVALUATION);
     }
+
     public void accesListeDiagnostique() throws SQLException, ClassNotFoundException {
         this.getControleurPrincipal().action(EnumAction.LISTEDIAGNOSTIQUE);
     }
@@ -75,7 +76,7 @@ public class ControleurMenu extends ControleurGenerique implements ActionListene
                 Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if (e.getSource().equals(getVue().getjButtonListeDiagnostique())){
+        if (e.getSource().equals(getVue().getjButtonListeDiagnostique())) {
             try {
                 accesListeDiagnostique();
             } catch (SQLException ex) {
@@ -84,7 +85,7 @@ public class ControleurMenu extends ControleurGenerique implements ActionListene
                 Logger.getLogger(ControleurMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if (e.getSource().equals(getVue().getjButtonStatistique())){
+        if (e.getSource().equals(getVue().getjButtonStatistique())) {
             try {
                 accesStatistique();
             } catch (SQLException ex) {

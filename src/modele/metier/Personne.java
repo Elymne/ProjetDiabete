@@ -25,7 +25,7 @@ public class Personne {
     }
 
     public String toString() {
-        return ("Personne{" + "id=" + this.getId() + ", nom=" + this.getNom() + ", prenom=" + this.getPrenom() + ", sexe=" + this.getSexe() + ", dateNaissance=" + this.getDateNaissance() + ", securiteSociale=" + this.getSecuriteSociale() + ", age=" + this.getAge() +'}');
+        return ("Personne{" + "id=" + this.getId() + ", nom=" + this.getNom() + ", prenom=" + this.getPrenom() + ", sexe=" + this.getSexe() + ", dateNaissance=" + this.getDateNaissance() + ", securiteSociale=" + this.getSecuriteSociale() + ", age=" + this.getAge() + '}');
     }
 
     public int getAge() {

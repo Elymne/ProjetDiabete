@@ -15,7 +15,7 @@ import modele.metier.Personne;
  * @author Djurdjevic Sacha
  */
 public class EvaluationDao {
-    
+
     public static Evaluation selectOneById(int id) throws ClassNotFoundException, SQLException, ParseException {
         Evaluation evaluation = null;
 
@@ -35,7 +35,7 @@ public class EvaluationDao {
         c.close();
         return evaluation;
     }
-    
+
     public static Evaluation selectOneByIdPersonne(int id) throws ClassNotFoundException, SQLException, ParseException {
         Evaluation evaluation = null;
 
@@ -55,7 +55,7 @@ public class EvaluationDao {
         c.close();
         return evaluation;
     }
-    
+
     public static ArrayList<Evaluation> selectAll() throws SQLException, ClassNotFoundException, ParseException {
         ArrayList<Evaluation> listeEvaluations = new ArrayList<Evaluation>();
         Evaluation evaluation = null;
@@ -78,7 +78,7 @@ public class EvaluationDao {
         c.close();
         return listeEvaluations;
     }
-    
+
     public static ArrayList<Evaluation> selectAllSexeFeminin() throws SQLException, ClassNotFoundException, ParseException {
         ArrayList<Evaluation> listeEvaluations = new ArrayList<Evaluation>();
         Evaluation evaluation = null;
@@ -101,7 +101,7 @@ public class EvaluationDao {
         c.close();
         return listeEvaluations;
     }
-    
+
     public static ArrayList<Evaluation> selectAllSexeMasculin() throws SQLException, ClassNotFoundException, ParseException {
         ArrayList<Evaluation> listeEvaluations = new ArrayList<Evaluation>();
         Evaluation evaluation = null;
@@ -123,8 +123,8 @@ public class EvaluationDao {
         }
         c.close();
         return listeEvaluations;
-    }   
-    
+    }
+
     public static void insert(double evaluationTourDeTaille, boolean evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCDGlycemie, Personne evaluationPersonne) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
@@ -155,7 +155,7 @@ public class EvaluationDao {
         c.commit();
         c.close();
     }
-    
+
     public static void update(int id, double evaluationTourDeTaille, int evaluationActiviteSportive, boolean evaluationTraitement, boolean evaluationFamillePositive, double evaluationMasse, int evaluationConsoLegume, boolean evaluationATCDGlycemie) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
@@ -186,7 +186,7 @@ public class EvaluationDao {
         c.commit();
         c.close();
     }
-    
+
     public static void delete(int id) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
@@ -202,7 +202,6 @@ public class EvaluationDao {
         c.commit();
         c.close();
     }
-    
 
     private static Evaluation evaluationFromResultSet(ResultSet rs) throws SQLException, ClassNotFoundException, ParseException {
         Evaluation clt = null;

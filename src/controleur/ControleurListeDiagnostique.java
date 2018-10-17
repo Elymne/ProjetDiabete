@@ -60,8 +60,6 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         }
     }
 
-    
-
     public void afficherListeId() throws SQLException, ClassNotFoundException {
         ((VueListeDiagnostique) vue).getModeleTableId().setRowCount(0);
         String[] titresColonnesId = {"Id Evaluation"};
@@ -236,7 +234,7 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
                 Logger.getLogger(ControleurListeDiagnostique.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if(e.getSource().equals(((VueListeDiagnostique) vue).getjButtonSupprimer())){
+        if (e.getSource().equals(((VueListeDiagnostique) vue).getjButtonSupprimer())) {
             try {
                 supprimerDiagnostique();
             } catch (ClassNotFoundException ex) {

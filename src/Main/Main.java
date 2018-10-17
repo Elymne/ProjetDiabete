@@ -16,7 +16,7 @@ public class Main {
 
         File f = new File("dbbSQLite.db");
         if (f.isFile()) {
-            
+
             new Connexion();
             ControleurPrincipal controleurPrincipal;
             controleurPrincipal = new ControleurPrincipal();
@@ -24,7 +24,7 @@ public class Main {
         } else {
             creationTableBddPersonne();
             creationTableBddEvaluation();
-            
+
             new Connexion();
             ControleurPrincipal controleurPrincipal;
             controleurPrincipal = new ControleurPrincipal();

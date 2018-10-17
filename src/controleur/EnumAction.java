@@ -5,7 +5,7 @@ package controleur;
  * @author Djurdjevic Sacha
  */
 public enum EnumAction {
-    
+
     QUITTER_APPLICATION,
     EVALUATION,
     QUITTER_EVALUATION,
@@ -15,5 +15,5 @@ public enum EnumAction {
     QUITTER_LISTEDIAGNOSTIQUE,
     STATISTIQUE,
     QUITTER_STATISTIQUE,
-    
+
 }

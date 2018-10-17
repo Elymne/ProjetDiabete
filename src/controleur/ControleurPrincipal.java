@@ -9,23 +9,23 @@ import javax.swing.JOptionPane;
  * @author Djurdjevic Sacha
  */
 public class ControleurPrincipal {
-    
+
     private ControleurMenu controleurMenu = null;
     private ControleurEvaluation controleurEvaluation = null;
     private ControleurAjoutPatient controleurAjoutPatient = null;
     private ControleurListeDiagnostique controleurListeDiagnostique = null;
     private ControleurStatistique controleurStatistique = null;
-    
-    public void action(){
-        if(controleurMenu==null){
-            controleurMenu=new ControleurMenu(this);
+
+    public void action() {
+        if (controleurMenu == null) {
+            controleurMenu = new ControleurMenu(this);
         }
         controleurMenu.getVue().setVisible(true);
         controleurMenu.getVue().setEnabled(true);
     }
-    
-    public void action(EnumAction action) throws SQLException, ClassNotFoundException{
-        switch(action){
+
+    public void action(EnumAction action) throws SQLException, ClassNotFoundException {
+        switch (action) {
             case QUITTER_APPLICATION:
                 menuQuitter();
                 break;
@@ -55,7 +55,7 @@ public class ControleurPrincipal {
                 break;
         }
     }
-    
+
     private void accesVueEvaluation() throws SQLException, ClassNotFoundException {
         if (controleurEvaluation == null) {
             controleurEvaluation = new ControleurEvaluation(this);
@@ -63,8 +63,8 @@ public class ControleurPrincipal {
         controleurMenu.getVue().setEnabled(false);
         controleurEvaluation.getVue().setVisible(true);
     }
-    
-    private void quitterVueEvaluation(){
+
+    private void quitterVueEvaluation() {
         if (controleurMenu == null) {
             controleurMenu = new ControleurMenu(this);
         }
@@ -72,7 +72,7 @@ public class ControleurPrincipal {
         controleurEvaluation.getVue().setVisible(false);
         controleurEvaluation = null;
     }
-    
+
     private void accesVueAjoutPatient() {
         if (controleurAjoutPatient == null) {
             controleurAjoutPatient = new ControleurAjoutPatient(this);
@@ -80,8 +80,8 @@ public class ControleurPrincipal {
         controleurMenu.getVue().setEnabled(false);
         controleurAjoutPatient.getVue().setVisible(true);
     }
-    
-    private void quitterVueAjoutPatient(){
+
+    private void quitterVueAjoutPatient() {
         if (controleurMenu == null) {
             controleurMenu = new ControleurMenu(this);
         }
@@ -89,7 +89,7 @@ public class ControleurPrincipal {
         controleurAjoutPatient.getVue().setVisible(false);
         controleurAjoutPatient = null;
     }
-    
+
     private void accesVueListeDiagnostique() throws SQLException, ClassNotFoundException {
         if (controleurListeDiagnostique == null) {
             controleurListeDiagnostique = new ControleurListeDiagnostique(this);
@@ -97,8 +97,8 @@ public class ControleurPrincipal {
         controleurMenu.getVue().setEnabled(false);
         controleurListeDiagnostique.getVue().setVisible(true);
     }
-    
-    private void quitterVueListeDiagnostique(){
+
+    private void quitterVueListeDiagnostique() {
         if (controleurMenu == null) {
             controleurMenu = new ControleurMenu(this);
         }
@@ -106,7 +106,7 @@ public class ControleurPrincipal {
         controleurListeDiagnostique.getVue().setVisible(false);
         controleurListeDiagnostique = null;
     }
-    
+
     private void accesVueStatistique() throws SQLException, ClassNotFoundException {
         if (controleurStatistique == null) {
             controleurStatistique = new ControleurStatistique(this);
@@ -114,8 +114,8 @@ public class ControleurPrincipal {
         controleurMenu.getVue().setEnabled(false);
         controleurStatistique.getVue().setVisible(true);
     }
-    
-    private void quitterVueStatistique(){
+
+    private void quitterVueStatistique() {
         if (controleurMenu == null) {
             controleurMenu = new ControleurMenu(this);
         }
@@ -123,7 +123,7 @@ public class ControleurPrincipal {
         controleurStatistique.getVue().setVisible(false);
         controleurStatistique = null;
     }
-    
+
     private void menuQuitter() {
         try {
             System.out.println("Deconnexion");
@@ -133,5 +133,5 @@ public class ControleurPrincipal {
             System.exit(0);
         }
     }
-     
+
 }

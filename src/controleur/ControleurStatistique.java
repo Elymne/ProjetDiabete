@@ -41,7 +41,7 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         lesEvaluations = selectionAge();
         selectionStatistique();
         ((VueStatistique) vue).getjPanelStatistique().setVisible(true);
-        
+
     }
 
     public ArrayList<Evaluation> selectionSexe() throws SQLException, ClassNotFoundException, ParseException {
@@ -100,7 +100,7 @@ public class ControleurStatistique extends ControleurGenerique implements Action
                                 results.add(evaluation);
                             }
                         }
-                    }else{
+                    } else {
                         results = lesEvaluations;
                     }
                 }
@@ -108,7 +108,7 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         }
         return results;
     }
-    
+
     public void selectionStatistique() {
         if (((VueStatistique) vue).getjComboBoxSelectionStat().getSelectedItem() == "Tous") {
             selectionStatistiqueTous();
@@ -135,22 +135,22 @@ public class ControleurStatistique extends ControleurGenerique implements Action
             selectionStatistiqueGlycemie();
         }
     }
-    
-    public int[] isFemme(){
+
+    public int[] isFemme() {
         int result[] = new int[2];
-        for(Evaluation evaluation : lesEvaluations){
-            if(evaluation.getEvaluationPersonne().getSexe() == "Femme"){
+        for (Evaluation evaluation : lesEvaluations) {
+            if (evaluation.getEvaluationPersonne().getSexe() == "Femme") {
                 result[0] = 80;
                 result[1] = 88;
-            }else{
+            } else {
                 result[0] = 94;
                 result[1] = 102;
             }
         }
         return result;
     }
-    
-    public void selectionStatistiqueActiviteSportive(){
+
+    public void selectionStatistiqueActiviteSportive() {
         affichage_2();
         int score1 = 0;
         int score2 = 0;
@@ -172,11 +172,12 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         ((VueStatistique) vue).getjTextFieldStat2().setText(Integer.toString(score2));
         ((VueStatistique) vue).getjLabelStat1().setText("Ne pratique pas du sport 30 minutes par jour");
         ((VueStatistique) vue).getjLabelStat2().setText("Pratique pas du sport 30 minutes par jour");
-        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne/nombre));
+        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne / nombre * 100) +  " %");
         ((VueStatistique) vue).getjTextFieldStatNombre().setText(Integer.toString(nombre));
+        ((VueStatistique) vue).getjLabelMoyenne().setText("% de personnes non Sportive");
     }
-    
-    public void selectionStatistiqueTraitement(){
+
+    public void selectionStatistiqueTraitement() {
         affichage_2();
         int score1 = 0;
         int score2 = 0;
@@ -184,7 +185,7 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         double moyenne = 0;
         for (Evaluation evaluation : lesEvaluations) {
             ++nombre;
-            if (evaluation.getEvaluationTraitement()== false) {
+            if (evaluation.getEvaluationTraitement() == false) {
                 ++score1;
             } else {
                 if (evaluation.getEvaluationTraitement() == true) {
@@ -198,11 +199,12 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         ((VueStatistique) vue).getjTextFieldStat2().setText(Integer.toString(score2));
         ((VueStatistique) vue).getjLabelStat1().setText("N'a pas des antécédents de traitement anti-HTA");
         ((VueStatistique) vue).getjLabelStat2().setText("A des antécédents de traitement anti-HTA");
-        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne/nombre));
+        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne / nombre * 100) + " %");
         ((VueStatistique) vue).getjTextFieldStatNombre().setText(Integer.toString(nombre));
+        ((VueStatistique) vue).getjLabelMoyenne().setText("% de personnes touchées par ce facteur");
     }
-    
-    public void selectionStatistiqueFamilleDiabete(){
+
+    public void selectionStatistiqueFamilleDiabete() {
         affichage_2();
         int score1 = 0;
         int score2 = 0;
@@ -210,7 +212,7 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         double moyenne = 0;
         for (Evaluation evaluation : lesEvaluations) {
             ++nombre;
-            if (evaluation.getEvaluationFamillePositive()== false) {
+            if (evaluation.getEvaluationFamillePositive() == false) {
                 ++score1;
             } else {
                 if (evaluation.getEvaluationFamillePositive() == true) {
@@ -224,11 +226,12 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         ((VueStatistique) vue).getjTextFieldStat2().setText(Integer.toString(score2));
         ((VueStatistique) vue).getjLabelStat1().setText("N'a pas des antécédents familial de diabète");
         ((VueStatistique) vue).getjLabelStat2().setText("A des antécédents familial de diabète");
-        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne/nombre));
+        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne / nombre * 100) + " %");
         ((VueStatistique) vue).getjTextFieldStatNombre().setText(Integer.toString(nombre));
+        ((VueStatistique) vue).getjLabelMoyenne().setText("% de personnes touchées par ce facteur");
     }
-    
-    public void selectionStatistiqueGlycemie(){
+
+    public void selectionStatistiqueGlycemie() {
         affichage_2();
         int score1 = 0;
         int score2 = 0;
@@ -236,10 +239,10 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         double moyenne = 0;
         for (Evaluation evaluation : lesEvaluations) {
             ++nombre;
-            if (evaluation.getEvaluationATCDGlycemie()== false) {
+            if (evaluation.getEvaluationATCDGlycemie() == false) {
                 ++score1;
             } else {
-                if (evaluation.getEvaluationATCDGlycemie()== true) {
+                if (evaluation.getEvaluationATCDGlycemie() == true) {
                     ++moyenne;
                     ++score2;
                 }
@@ -250,10 +253,11 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         ((VueStatistique) vue).getjTextFieldStat2().setText(Integer.toString(score2));
         ((VueStatistique) vue).getjLabelStat1().setText("N'a pas des antécédents de glycémie supérieur à la normale");
         ((VueStatistique) vue).getjLabelStat2().setText("A des antécédents de glycémie supérieur à la normale");
-        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne/nombre));
+        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne / nombre * 100) + " %");
         ((VueStatistique) vue).getjTextFieldStatNombre().setText(Integer.toString(nombre));
+        ((VueStatistique) vue).getjLabelMoyenne().setText("% de personnes touchées par ce facteur");
     }
-    
+
     public void selectionStatistiqueTourTaille() {
         affichage_3();
         int score1 = 0;
@@ -286,11 +290,12 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         ((VueStatistique) vue).getjTextFieldStat3().setText(Integer.toString(score3));
         ((VueStatistique) vue).getjLabelStat1().setText("Tour de taille (cm) < " + Integer.toString(results[0]));
         ((VueStatistique) vue).getjLabelStat2().setText("Tour de taille (cm) " + Integer.toString(results[0]) + " - " + Integer.toString(results[1]));
-        ((VueStatistique) vue).getjLabelStat3().setText("Tour de taille (cm) > " +Integer.toString(results[1]));
-        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne/nombre));
+        ((VueStatistique) vue).getjLabelStat3().setText("Tour de taille (cm) > " + Integer.toString(results[1]));
+        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne / nombre));
         ((VueStatistique) vue).getjTextFieldStatNombre().setText(Integer.toString(nombre));
+        ((VueStatistique) vue).getjLabelMoyenne().setText("Moyenne de tour de taille");
     }
-    
+
     public void selectionStatistiqueLegume() {
         affichage_3();
         int score1 = 0;
@@ -322,10 +327,13 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         ((VueStatistique) vue).getjLabelStat1().setText("Tous les jours");
         ((VueStatistique) vue).getjLabelStat2().setText("Pas tout les jours");
         ((VueStatistique) vue).getjLabelStat3().setText("Non");
-        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne/nombre));
+        ((VueStatistique) vue).getjTextFieldStatMoyenne().setEnabled(false);
+        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText("");
         ((VueStatistique) vue).getjTextFieldStatNombre().setText(Integer.toString(nombre));
+        ((VueStatistique) vue).getjLabelMoyenne().setText("");
+        
     }
-    
+
     public void selectionStatistiqueIMC() {
         affichage_3();
         int score1 = 0;
@@ -335,7 +343,7 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         double moyenne = 0;
         for (Evaluation evaluation : lesEvaluations) {
             ++nombre;
-            if (evaluation.getEvaluationMasse()<= 94) {
+            if (evaluation.getEvaluationMasse() <= 94) {
                 moyenne += evaluation.getEvaluationMasse();
                 ++score1;
             } else {
@@ -358,8 +366,9 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         ((VueStatistique) vue).getjLabelStat1().setText("Indice de masse corporelle(kg/m²) < 25 ");
         ((VueStatistique) vue).getjLabelStat2().setText("Indice de masse corporelle(kg/m²) 25-30");
         ((VueStatistique) vue).getjLabelStat3().setText("Indice de masse corporelle(kg/m²) > 30");
-        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne/nombre));
+        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne / nombre));
         ((VueStatistique) vue).getjTextFieldStatNombre().setText(Integer.toString(nombre));
+        ((VueStatistique) vue).getjLabelMoyenne().setText("Moyenne de l'IMC");
     }
 
     public void selectionStatistiqueTous() {
@@ -411,11 +420,12 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         ((VueStatistique) vue).getjLabelStat3().setText("Risque modéré (= 17%)");
         ((VueStatistique) vue).getjLabelStat4().setText("Risque élevé (= 33%)");
         ((VueStatistique) vue).getjLabelStat5().setText("Risque très élevé (= 50%)");
-        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne/nombre));
+        ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne / nombre));
         ((VueStatistique) vue).getjTextFieldStatNombre().setText(Integer.toString(nombre));
+        ((VueStatistique) vue).getjLabelMoyenne().setText("Moyenne de score");
     }
-    
-    public void affichage_5(){
+
+    public void affichage_5() {
         ((VueStatistique) vue).getjLabelStatistiqueTitre().setVisible(true);
         ((VueStatistique) vue).getjTextFieldStatMoyenne().setVisible(true);
         ((VueStatistique) vue).getjTextFieldStatNombre().setVisible(true);
@@ -432,9 +442,10 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         ((VueStatistique) vue).getjTextFieldStat3().setEnabled(true);
         ((VueStatistique) vue).getjTextFieldStat4().setEnabled(true);
         ((VueStatistique) vue).getjTextFieldStat5().setEnabled(true);
+        ((VueStatistique) vue).getjTextFieldStatMoyenne().setEnabled(true);
     }
-    
-    public void affichage_3(){
+
+    public void affichage_3() {
         ((VueStatistique) vue).getjLabelStatistiqueTitre().setVisible(true);
         ((VueStatistique) vue).getjTextFieldStatMoyenne().setVisible(true);
         ((VueStatistique) vue).getjTextFieldStatNombre().setVisible(true);
@@ -451,9 +462,10 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         ((VueStatistique) vue).getjTextFieldStat5().setText("");
         ((VueStatistique) vue).getjTextFieldStat4().setEnabled(false);
         ((VueStatistique) vue).getjTextFieldStat5().setEnabled(false);
+        ((VueStatistique) vue).getjTextFieldStatMoyenne().setEnabled(true);
     }
-    
-    public void affichage_2(){
+
+    public void affichage_2() {
         ((VueStatistique) vue).getjLabelStatistiqueTitre().setVisible(true);
         ((VueStatistique) vue).getjTextFieldStatMoyenne().setVisible(true);
         ((VueStatistique) vue).getjTextFieldStatNombre().setVisible(true);
@@ -470,6 +482,7 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         ((VueStatistique) vue).getjTextFieldStat3().setEnabled(false);
         ((VueStatistique) vue).getjTextFieldStat4().setEnabled(false);
         ((VueStatistique) vue).getjTextFieldStat5().setEnabled(false);
+        ((VueStatistique) vue).getjTextFieldStatMoyenne().setEnabled(true);
     }
 
     public void quitterStatistique() throws SQLException, ClassNotFoundException {
@@ -534,5 +547,4 @@ public class ControleurStatistique extends ControleurGenerique implements Action
     @Override
     public void windowDeactivated(WindowEvent e) {
     }
-
 }

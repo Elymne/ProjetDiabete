@@ -90,7 +90,7 @@ public class Evaluation {
     public void setEvaluationPersonne(Personne evaluationPersonne) {
         this.evaluationPersonne = evaluationPersonne;
     }
-    
+
     public int getId() {
         return id;
     }

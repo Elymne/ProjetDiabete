@@ -159,7 +159,7 @@ public class PersonneDao {
                 + "?,"
                 + "?,"
                 + "?);";
-                
+
         try (PreparedStatement pstmt = c.prepareStatement(sql);) {
             pstmt.setString(1, nom);
             pstmt.setString(2, prenom);

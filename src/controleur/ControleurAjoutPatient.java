@@ -79,7 +79,7 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
 
         boolean verif = true;
         boolean verifField[] = new boolean[6];
-        
+
         if (!controleur.StringMatcher.isWord(nom)) {
             verifField[0] = false;
             ((VueAjoutPatient) vue).getjLabelErrorNom().setText("Nom incorrecte");
