@@ -17,9 +17,14 @@ import vue.VueAjoutPatient;
 /**
  *
  * @author Djurdjevic Sacha
+ * @author Allain Mathys
  */
 public class ControleurAjoutPatient extends ControleurGenerique implements ActionListener, WindowListener, KeyListener {
 
+    /**
+     *
+     * @param controleurPrincipal
+     */
     public ControleurAjoutPatient(ControleurPrincipal controleurPrincipal) {
         super(controleurPrincipal);
         vue = new VueAjoutPatient();
@@ -37,11 +42,24 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
         vue.addKeyListener(this);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public VueAjoutPatient getVue() {
         return (VueAjoutPatient) vue;
     }
 
+    /**
+     *
+     * Permet d'ajouter à la base de données une nouvelle personne suivant les données écrite dans les champs de texte.
+     * Pour que cette méthode s'effectue correctement, il faut que la méthode verifier() retourne true sinon la méthode en fait rien.
+     * Cette méthode fait quitter la vue actuelle pour revenir au menu
+     * 
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public void ajoutPatient() throws ClassNotFoundException, SQLException {
         if (verifier()) {
             if (JOptionPane.showConfirmDialog(null, "Vous êtes sûr ?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -68,6 +86,13 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
         }
     }
 
+    /**
+     *
+     * Méthode permettant de valider le texte inscrit dans les champs de texte.
+     * Si l'un de ces champs est incorrect, la méthode renvoie false, sinon true.
+     * 
+     * @return Boolean
+     */
     public boolean verifier() {
 
         String nom = ((VueAjoutPatient) vue).getjTextFieldNom().getText();
@@ -133,6 +158,13 @@ public class ControleurAjoutPatient extends ControleurGenerique implements Actio
 
     }
 
+    /**
+     *
+     * Permet de quitter la vue actuelle pour revenir au menu
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void quitterVueAjoutPatient() throws SQLException, ClassNotFoundException {
         int a = JOptionPane.showConfirmDialog(getVue(), "Annulation de l'ajout d'un patient\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {

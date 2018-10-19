@@ -13,9 +13,14 @@ import vue.VueMenu;
 /**
  *
  * @author Djurdjevic Sacha
+ * @author Allain Mathys
  */
 public class ControleurMenu extends ControleurGenerique implements ActionListener, WindowListener {
 
+    /**
+     *
+     * @param controleurPrincipal
+     */
     public ControleurMenu(ControleurPrincipal controleurPrincipal) {
         super(controleurPrincipal);
         vue = new VueMenu();
@@ -26,11 +31,22 @@ public class ControleurMenu extends ControleurGenerique implements ActionListene
         getVue().getjButtonAjoutPatient().addActionListener(this);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public VueMenu getVue() {
         return (VueMenu) vue;
     }
 
+    /**
+     *
+     * Permet de quitter l'application.
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void quitterApplication() throws SQLException, ClassNotFoundException {
         int a = JOptionPane.showConfirmDialog(getVue(), "Quitter l'application\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
@@ -38,18 +54,46 @@ public class ControleurMenu extends ControleurGenerique implements ActionListene
         }
     }
 
+    /**
+     *
+     * Permet d'accéder à la vue des évaluations
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void accesEvaluation() throws SQLException, ClassNotFoundException {
         this.getControleurPrincipal().action(EnumAction.EVALUATION);
     }
 
+    /**
+     *
+     * Permet d'accéder à la vue des diagnostiques
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void accesListeDiagnostique() throws SQLException, ClassNotFoundException {
         this.getControleurPrincipal().action(EnumAction.LISTEDIAGNOSTIQUE);
     }
 
+    /**
+     *
+     * Permet d'accéder à la vue des Statistiques
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void accesStatistique() throws SQLException, ClassNotFoundException {
         this.getControleurPrincipal().action(EnumAction.STATISTIQUE);
     }
 
+    /**
+     *
+     * Permet d'accéder à la vue des Patients
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void accesAjoutPatient() throws SQLException, ClassNotFoundException {
         this.getControleurPrincipal().action(EnumAction.AJOUTPATIENT);
     }

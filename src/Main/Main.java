@@ -9,6 +9,7 @@ import java.io.File;
 /**
  *
  * @author Djurdjevic Sacha
+ * @author Allain Mathys
  */
 public class Main {
 

@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Djurdjevic Sacha
+ * @author Allain Mathys
  */
 public class ControleurPrincipal {
 
@@ -16,6 +17,12 @@ public class ControleurPrincipal {
     private ControleurListeDiagnostique controleurListeDiagnostique = null;
     private ControleurStatistique controleurStatistique = null;
 
+    /**
+     *
+     * Permet d'instancier le controleur Menu
+     * Cette méthode sans paramètre se lance dans le main.
+     * 
+     */
     public void action() {
         if (controleurMenu == null) {
             controleurMenu = new ControleurMenu(this);
@@ -24,6 +31,14 @@ public class ControleurPrincipal {
         controleurMenu.getVue().setEnabled(true);
     }
 
+    /**
+     *
+     * Permet d'instancier un des controleurs suivant le paramètre.
+     * 
+     * @param action
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void action(EnumAction action) throws SQLException, ClassNotFoundException {
         switch (action) {
             case QUITTER_APPLICATION:

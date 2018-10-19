@@ -7,6 +7,7 @@ import java.sql.Statement;
 /**
  *
  * @author Djurdjevic Sacha
+ * @author Allain Mathys
  */
 public class CreationTable {
 

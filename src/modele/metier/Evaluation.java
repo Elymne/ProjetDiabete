@@ -5,6 +5,7 @@ import java.text.ParseException;
 /**
  *
  * @author Djurdjevic Sacha
+ * @author Allain Mathys
  */
 public class Evaluation {
 

@@ -12,6 +12,7 @@ import modele.metier.Personne;
 /**
  *
  * @author Djurdjevic Sacha
+ * @author Allain Mathys
  */
 public class EvaluationDaoTest {
 

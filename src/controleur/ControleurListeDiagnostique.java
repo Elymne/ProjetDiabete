@@ -20,12 +20,19 @@ import vue.VueListeDiagnostique;
 /**
  *
  * @author Djurdjevic Sacha
+ * @author Allain Mathys
  */
 public class ControleurListeDiagnostique extends ControleurGenerique implements ActionListener, WindowListener, MouseListener {
 
     private ArrayList<Evaluation> lesEvaluations;
     private Evaluation evaluation;
 
+    /**
+     *
+     * @param controleurPrincipal
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public ControleurListeDiagnostique(ControleurPrincipal controleurPrincipal) throws SQLException, ClassNotFoundException {
         super(controleurPrincipal);
         vue = new VueListeDiagnostique();
@@ -37,11 +44,21 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         ((VueListeDiagnostique) vue).getjTableId().addMouseListener(this);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public VueListeDiagnostique getVue() {
         return (VueListeDiagnostique) vue;
     }
 
+    /**
+     *
+     * Affiche dans le tableau la liste des personnes qui ont fait une ou plusieurs évaluations.
+     * Les prénoms et les noms des personnes évaluées sont les seules informations à être affichées dans ce tableau.
+     * 
+     */
     public void afficherListeInformation() {
         ((VueListeDiagnostique) vue).getModeleTableListeInformation().setRowCount(0);
         String[] titresColonnesListeInformation = {"Nom", "Prenom"};
@@ -60,6 +77,14 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         }
     }
 
+    /**
+     *
+     * Affiche dans le tableau la liste des personnes qui ont fait une ou plusieurs évaluations.
+     * L'id des personnes évaluées est la seule information à être affichée dans ce tableau.
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void afficherListeId() throws SQLException, ClassNotFoundException {
         ((VueListeDiagnostique) vue).getModeleTableId().setRowCount(0);
         String[] titresColonnesId = {"Id Evaluation"};
@@ -77,6 +102,14 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         }
     }
 
+    /**
+     *
+     * Permet d'afficher le score de la personne selectionner dans le tableau.
+     * 
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     * @throws ParseException
+     */
     public void afficherInformationEvaluation() throws ClassNotFoundException, SQLException, ParseException {
         int ligne = ((VueListeDiagnostique) vue).getjTableId().getSelectedRow();
         int colonne = ((VueListeDiagnostique) vue).getjTableId().getSelectedColumn();
@@ -91,6 +124,14 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         }
     }
 
+    /**
+     *
+     * Permet de supprimer l'évaluation sélectionnée
+     * 
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     * @throws ParseException
+     */
     public void supprimerDiagnostique() throws ClassNotFoundException, SQLException, ParseException {
         int ligne = ((VueListeDiagnostique) vue).getjTableId().getSelectedRow();
         int colonne = ((VueListeDiagnostique) vue).getjTableId().getSelectedColumn();
@@ -104,6 +145,17 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         }
     }
 
+    /**
+     *
+     * Affiche les informations suivantes dans le tableau d'information de Personne :
+     * Nom
+     * Prenom
+     * Sexe
+     * Date de Naissance
+     * Code de sécurité sociale
+     * 
+     * @param evaluation
+     */
     public void remplirJTextFieldPersonne(Evaluation evaluation) {
         String nom = (String) evaluation.getEvaluationPersonne().getNom();
         String prenom = (String) evaluation.getEvaluationPersonne().getPrenom();
@@ -119,6 +171,20 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
 
     }
 
+    /**
+     *
+     * Affiche les informations suivantes dans le tableau d'information de Evaluation :
+     * Tour de taille
+     * Activité sportive sup à 30 minutes
+     * ATCD de traitement
+     * ATCD de famille
+     * L'IMC
+     * L'alimentation
+     * ATCD de glycémie
+     * L'age
+     * 
+     * @param evaluation
+     */
     public void remplirJTextFieldEvaluation(Evaluation evaluation) {
         String taille = Double.toString(evaluation.getEvaluationTourDeTaille());
         Boolean sportif = evaluation.getEvaluationActiviteSportive();
@@ -175,6 +241,12 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         ((VueListeDiagnostique) vue).getjTextFieldAge().setText(age);
     }
 
+    /**
+     *
+     * Affiche le détail des scores de la personne sélectionnée.
+     * 
+     * @param evaluation
+     */
     public void remplirJTextFieldEvaluationScore(Evaluation evaluation) {
         EvaluationScore evaluationScore = new EvaluationScore(evaluation);
         Integer tailleScore = evaluationScore.getEvaluationTourDeTaille();
@@ -219,6 +291,13 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
         ((VueListeDiagnostique) vue).getjTextFieldRisque().setText(Integer.toString(risque) + "%");
     }
 
+    /**
+     *  
+     * Permet de quitter la vue actuelle pour revenir au menu
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void quitterListeDiagnostique() throws SQLException, ClassNotFoundException {
         this.getControleurPrincipal().action(EnumAction.QUITTER_LISTEDIAGNOSTIQUE);
     }

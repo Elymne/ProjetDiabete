@@ -11,9 +11,19 @@ import modele.metier.Personne;
 /**
  *
  * @author Djurdjevic Sacha
+ * @author Allain Mathys
  */
 public class PersonneDao {
 
+    /**
+     *
+     * Selectionne une personne grâce à son id dans la bddSQLite.
+     * 
+     * @param id
+     * @return Object Personne
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public static Personne selectOneById(int id) throws ClassNotFoundException, SQLException {
         Personne personne = null;
 
@@ -34,6 +44,16 @@ public class PersonneDao {
         return personne;
     }
 
+    /**
+     *
+     * Selectionne une personne grâce à son prénom et à son nom dans la bddSQLite.
+     * 
+     * @param nom
+     * @param prenom
+     * @return Object Personne
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public static Personne selectOneByNomAndPrenom(String nom, String prenom) throws ClassNotFoundException, SQLException {
 
         Personne personne = null;
@@ -56,6 +76,14 @@ public class PersonneDao {
         return personne;
     }
 
+    /**
+     *
+     * Selectionne toutes les personnes dans la bddSQLite.
+     * 
+     * @return List of Object Personne
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static ArrayList<Personne> selectAll() throws SQLException, ClassNotFoundException {
         ArrayList<Personne> listePersonnes = new ArrayList<Personne>();
         Personne personne = null;
@@ -79,6 +107,15 @@ public class PersonneDao {
         return listePersonnes;
     }
 
+    /**
+     *
+     * Selectionne toutes les personnes avec le même nom de famille.
+     * 
+     * @param nom
+     * @return List of Object Personne
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static ArrayList<Personne> selectAllByNom(String nom) throws SQLException, ClassNotFoundException {
         ArrayList<Personne> listePersonnes = new ArrayList<Personne>();
         Personne personne = null;
@@ -102,6 +139,14 @@ public class PersonneDao {
         return listePersonnes;
     }
 
+    /**
+     *
+     * Selectionne toutes les personnes en ordonnant le résultat par ordre croissant.
+     * 
+     * @return List of Object Personne
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static ArrayList<Personne> selectAllOrderByNameASC() throws SQLException, ClassNotFoundException {
         ArrayList<Personne> listePersonnes = new ArrayList<Personne>();
         Personne personne = null;
@@ -125,6 +170,14 @@ public class PersonneDao {
         return listePersonnes;
     }
 
+    /**
+     *
+     * Selectionne toutes les personnes en ordonnant le résultat par ordre décroissant.
+     * 
+     * @return List of Object Personne
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static ArrayList<Personne> selectAllOrderByNameDESC() throws SQLException, ClassNotFoundException {
         ArrayList<Personne> listePersonnes = new ArrayList<Personne>();
         Personne personne = null;
@@ -148,6 +201,19 @@ public class PersonneDao {
         return listePersonnes;
     }
 
+    /**
+     *
+     * Ajoute une nouvelle personne dans la bddSQLite.
+     * 
+     * @param nom
+     * @param prenom
+     * @param sexe
+     * @param dateNaissance
+     * @param securiteSociale
+     * @param age
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public static void insert(String nom, String prenom, String sexe, String dateNaissance, String securiteSociale, int age) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
@@ -176,6 +242,20 @@ public class PersonneDao {
         c.close();
     }
 
+    /**
+     *
+     * Modifie une personne dans la bddSQLite.
+     * 
+     * @param id
+     * @param nom
+     * @param prenom
+     * @param sexe
+     * @param dateNaissance
+     * @param securiteSociale
+     * @param age
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public static void update(int id, String nom, String prenom, String sexe, String dateNaissance, String securiteSociale, int age) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");
@@ -205,6 +285,14 @@ public class PersonneDao {
         c.close();
     }
 
+    /**
+     *
+     * Supprime une personne dans la bddSQLite.
+     * 
+     * @param id
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static void delete(int id) throws SQLException, ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         Connection c = DriverManager.getConnection("jdbc:sqlite:dbbSQLite.db");

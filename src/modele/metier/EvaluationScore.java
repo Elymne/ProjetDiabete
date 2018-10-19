@@ -3,6 +3,7 @@ package modele.metier;
 /**
  *
  * @author Djurdjevic Sacha
+ * @author Allain Mathys
  */
 public class EvaluationScore {
 

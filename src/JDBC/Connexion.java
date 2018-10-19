@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 /**
  *
  * @author Djurdjevic Sacha
+ * @author Allain Mathys
  */
 public class Connexion {
 

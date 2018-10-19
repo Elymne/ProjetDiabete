@@ -19,11 +19,18 @@ import vue.VueEvaluation;
 /**
  *
  * @author Djurdjevic Sacha
+ * @author Allain Mathys
  */
 public class ControleurEvaluation extends ControleurGenerique implements ActionListener, WindowListener, KeyListener {
 
     Personne personne;
 
+    /**
+     *
+     * @param controleurPrincipal
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public ControleurEvaluation(ControleurPrincipal controleurPrincipal) throws SQLException, ClassNotFoundException {
         super(controleurPrincipal);
         vue = new VueEvaluation();
@@ -44,11 +51,22 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
         ((VueEvaluation) vue).getjTextFieldTourTaille().addKeyListener(this);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public VueEvaluation getVue() {
         return (VueEvaluation) vue;
     }
 
+    /**
+     *
+     * Méthode permettant d'afficher dans une comboBox 'nom' la liste de tous les noms inscrit dans la bddSQLite (Table Personne).
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void remplirJComboBoxNom() throws SQLException, ClassNotFoundException {
         resetElements();
         ArrayList<Personne> listePersonnes = new ArrayList<>();
@@ -58,6 +76,13 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
         }
     }
 
+    /**
+     *
+     * Méthode permettant d'afficher dans une comboBox 'Prénom' tous les prénoms suivant le nom sélectionné dans la jcomboBox 'nom' inscrit dans la bddSQLite (Table Personne).
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void remplirJComboBoxPrenom() throws SQLException, ClassNotFoundException {
         ArrayList<Personne> listePersonnes = new ArrayList<>();
         String nom = (((VueEvaluation) vue).getjComboBoxNomPatient().getSelectedItem().toString());
@@ -67,10 +92,24 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
         }
     }
 
+    /**
+     *
+     * Permet de retirer la liste des prénoms dans la jcomboBox 'prenom'
+     * 
+     */
     public void resetElements() {
         getVue().getjComboBoxPrenomPatient().removeAllItems();
     }
 
+    /**
+     *
+     * Permet d'ajouter une nouvelle évaluation grace aux éléments inscrit dans le formulaire.
+     * Pour que cette méthode s'effectue correctement, il faut que la méthode verifier() retourne true sinon la méthode en fait rien.
+     * Cette méthode fait quitter la vue actuelle pour revenir au menu
+     * 
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public void ajouterEvaluation() throws ClassNotFoundException, SQLException {
         if (verifier()) {
             if (JOptionPane.showConfirmDialog(null, "Vous êtes sûr ?", "WARNING", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -115,6 +154,13 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
         }
     }
 
+    /**
+     * 
+     * Méthode permettant de valider le texte inscrit dans les champs de texte.
+     * Si l'un de ces champs est incorrect, la méthode renvoie false, sinon true.
+     * 
+     * @return
+     */
     public boolean verifier() {
 
         String tdt = ((VueEvaluation) vue).getjTextFieldTourTaille().getText();
@@ -153,6 +199,13 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
         return verif;
     }
 
+    /**
+     *
+     * Permet de quitter la vue actuelle pour revenir au menu
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void quitterVueEvaluation() throws SQLException, ClassNotFoundException {
         int a = JOptionPane.showConfirmDialog(getVue(), "Annulation de l'evaluation\nEtes-vous sûr(e) ?", "DIABETUS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
