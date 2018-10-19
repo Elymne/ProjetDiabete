@@ -104,7 +104,7 @@ public class ControleurListeDiagnostique extends ControleurGenerique implements 
 
     /**
      *
-     * Permet d'afficher le score de la personne selectionner dans le tableau.
+     * Permet d'afficher le score de la personne selectionné dans le tableau.
      * 
      * @throws ClassNotFoundException
      * @throws SQLException

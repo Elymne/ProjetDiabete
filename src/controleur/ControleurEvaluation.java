@@ -187,7 +187,7 @@ public class ControleurEvaluation extends ControleurGenerique implements ActionL
             verifField[2] = false;
             ((VueEvaluation) vue).getjLabelErrorPrenom().setText("Le prénom n'a pas été selectionné");
         } else {
-            ((VueEvaluation) vue).getjLabelErrorTDC().setText("");
+            ((VueEvaluation) vue).getjLabelErrorPrenom().setText("");
             verifField[2] = true;
         }
 

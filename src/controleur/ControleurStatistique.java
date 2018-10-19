@@ -209,10 +209,10 @@ public class ControleurStatistique extends ControleurGenerique implements Action
         ((VueStatistique) vue).getjTextFieldStat1().setText(Integer.toString(score1));
         ((VueStatistique) vue).getjTextFieldStat2().setText(Integer.toString(score2));
         ((VueStatistique) vue).getjLabelStat1().setText("Ne pratique pas du sport 30 minutes par jour");
-        ((VueStatistique) vue).getjLabelStat2().setText("Pratique pas du sport 30 minutes par jour");
+        ((VueStatistique) vue).getjLabelStat2().setText("Pratique du sport 30 minutes par jour");
         ((VueStatistique) vue).getjTextFieldStatMoyenne().setText(Double.toString(moyenne / nombre * 100) +  " %");
         ((VueStatistique) vue).getjTextFieldStatNombre().setText(Integer.toString(nombre));
-        ((VueStatistique) vue).getjLabelMoyenne().setText("% de personnes non Sportive");
+        ((VueStatistique) vue).getjLabelMoyenne().setText("% de personnes Sportive");
     }
 
     /**
